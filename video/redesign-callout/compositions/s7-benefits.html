@@ -1,0 +1,110 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #s7-ground {
+      position: absolute;
+      inset: 0;
+      background: var(--color-ink, #111111);
+    }
+    #root .t {
+      top: 650px;
+      font-size: 190px;
+      color: #ffffff;
+    }
+    #s7-t2 {
+      font-size: 160px !important;
+    }
+    #s7-t3 {
+      top: 600px !important;
+      font-size: 150px !important;
+    }
+    #s7-bolt {
+      left: 830px;
+      top: 120px;
+      width: 260px;
+      height: 420px;
+    }
+    #s7-phone {
+      left: 830px;
+      top: 100px;
+      width: 260px;
+      height: 440px;
+    }
+    #s7-rocket {
+      left: 810px;
+      top: 70px;
+      width: 300px;
+      height: 480px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="s7-benefits" data-width="1920" data-height="1080">
+    <div id="s7-ground"></div>
+
+    <div id="s7-a" class="clip layer" data-start="0.1" data-duration="0.95" data-track-index="0" data-layout-allow-overflow>
+      <svg id="s7-bolt" class="ico" viewBox="0 0 260 420" aria-hidden="true">
+        <polygon points="160,10 30,240 122,240 88,410 232,160 140,160 196,10" fill="#ffd23f" stroke="#fff" stroke-width="12" stroke-linejoin="round" />
+      </svg>
+      <div id="s7-t1" class="big t"><span class="w hl">Fast.</span></div>
+    </div>
+
+    <div id="s7-b" class="clip layer" data-start="1.0" data-duration="1.15" data-track-index="1" data-layout-allow-overflow>
+      <svg id="s7-phone" class="ico" viewBox="0 0 260 440" aria-hidden="true">
+        <rect x="8" y="8" width="244" height="424" rx="38" fill="#fff" />
+        <rect x="26" y="52" width="208" height="340" rx="12" fill="#ffd23f" />
+        <rect x="100" y="22" width="60" height="12" rx="6" fill="#111" />
+        <rect x="46" y="76" width="140" height="26" rx="5" fill="#111" /><rect x="46" y="114" width="100" height="16" rx="5" fill="#111" opacity="0.5" />
+        <rect x="46" y="148" width="168" height="90" rx="8" fill="#fff" stroke="#111" stroke-width="5" />
+        <rect x="46" y="254" width="168" height="44" rx="8" fill="#111" />
+        <circle cx="210" cy="372" r="52" fill="#21b36b" stroke="#fff" stroke-width="10" />
+        <path d="M184 372 L203 391 L238 352" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      </svg>
+      <div id="s7-t2" class="big t"><span class="w">Mobile-</span><span class="w hl">ready.</span></div>
+    </div>
+
+    <div id="s7-c" class="clip layer" data-start="2.1" data-duration="2.0" data-track-index="0" data-layout-allow-overflow>
+      <svg id="s7-rocket" class="ico" viewBox="0 0 300 480" aria-hidden="true">
+        <g id="s7-flame">
+          <path d="M104 330 Q150 480 196 330 Z" fill="#e5322d" />
+          <path d="M122 330 Q150 430 178 330 Z" fill="#ffd23f" />
+        </g>
+        <path d="M72 250 L14 360 L80 330 Z" fill="#e5322d" stroke="#fff" stroke-width="8" stroke-linejoin="round" />
+        <path d="M228 250 L286 360 L220 330 Z" fill="#e5322d" stroke="#fff" stroke-width="8" stroke-linejoin="round" />
+        <path d="M150 10 Q252 120 230 330 L70 330 Q48 120 150 10 Z" fill="#fff" />
+        <circle cx="150" cy="160" r="42" fill="#ffd23f" stroke="#111" stroke-width="12" />
+        <rect x="70" y="300" width="160" height="30" fill="#111" opacity="0.15" />
+      </svg>
+      <div id="s7-t3" class="big t"><span class="w">Ready</span> <span class="w">to</span><br /><span class="w hl">launch.</span></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s7-ground", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.3, ease: "power2.inOut" }, 0);
+
+      // Fast.
+      tl.fromTo("#s7-bolt", { y: -400, scale: 0.6, rotation: -20 }, { y: 0, scale: 1, rotation: 0, duration: 0.3, ease: "power4.out" }, 0.12);
+      tl.fromTo("#s7-t1 .w", { opacity: 0, x: -300, filter: "blur(14px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.25, ease: "expo.out" }, 0.15);
+      tl.to(["#s7-bolt", "#s7-t1"], { x: 900, filter: "blur(14px)", opacity: 0, duration: 0.2, ease: "power3.in" }, 0.85);
+
+      // Mobile-ready.
+      tl.fromTo("#s7-phone", { x: -700, rotation: -12, filter: "blur(12px)" }, { x: 0, rotation: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 1.02);
+      tl.fromTo("#s7-t2 .w", { opacity: 0, x: -200, filter: "blur(10px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.25, stagger: 0.12, ease: "expo.out" }, 1.06);
+      tl.to(["#s7-phone", "#s7-t2"], { x: 900, filter: "blur(14px)", opacity: 0, duration: 0.2, ease: "power3.in" }, 1.95);
+
+      // Ready to launch: the rocket lands on its pad, then takes off and drags the yellow up behind it.
+      tl.fromTo("#s7-rocket", { x: -700, filter: "blur(12px)" }, { x: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 2.12);
+      tl.fromTo("#s7-flame", { scaleY: 0.2, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, 2.6);
+      tl.to("#s7-flame", { scaleY: 0.75, duration: 0.08, ease: "none", yoyo: true, repeat: 5 }, 2.85);
+      tl.fromTo("#s7-t3 .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.15, ease: "power2.out" }, 2.17);
+      tl.to("#s7-rocket", { y: -1000, duration: 0.6, ease: "power3.in" }, 3.1);
+      tl.to("#s7-t3", { opacity: 0, filter: "blur(10px)", duration: 0.2, ease: "power2.in" }, 3.45);
+      window.__timelines["s7-benefits"] = tl;
+    })();
+  </script>
+</template>

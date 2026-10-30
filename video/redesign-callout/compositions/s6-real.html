@@ -1,0 +1,129 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #s6-ground {
+      position: absolute;
+      inset: 0;
+      background: var(--color-paper, #ffffff);
+    }
+    #s6-pic {
+      left: 700px;
+      top: 110px;
+      width: 520px;
+      height: 380px;
+    }
+    #s6-t1 {
+      top: 590px;
+      font-size: 130px;
+      color: var(--color-ink, #111111);
+    }
+    #s6-old {
+      left: 330px;
+      top: 150px;
+      width: 420px;
+      height: 300px;
+    }
+    #s6-arrow {
+      left: 790px;
+      top: 230px;
+      width: 200px;
+      height: 140px;
+    }
+    #s6-new {
+      left: 760px;
+      top: 90px;
+      width: 640px;
+      height: 440px;
+    }
+    #s6-t2 {
+      top: 590px;
+      font-size: 120px;
+      color: var(--color-ink, #111111);
+    }
+    #s6-kicker {
+      top: 860px;
+      color: var(--color-ink, #111111);
+      font-size: 56px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="s6-real" data-width="1920" data-height="1080">
+    <div id="s6-ground"></div>
+
+    <!-- "Not just a pretty picture." -->
+    <div id="s6-a" class="clip layer" data-start="0.2" data-duration="1.95" data-track-index="0" data-layout-allow-overflow>
+      <svg id="s6-pic" class="ico" viewBox="0 0 520 380" aria-hidden="true">
+        <rect x="8" y="8" width="504" height="364" rx="10" fill="#fff" stroke="#111" stroke-width="14" />
+        <rect x="40" y="40" width="440" height="300" fill="#bfe3ff" />
+        <circle cx="380" cy="110" r="38" fill="#ffd23f" stroke="#111" stroke-width="8" />
+        <path d="M40 340 L170 170 L250 270 L320 200 L480 340 Z" fill="#21b36b" stroke="#111" stroke-width="10" stroke-linejoin="round" />
+        <path d="M-20 -20 L540 400" pathLength="100" stroke="#e5322d" stroke-width="34" stroke-linecap="round" fill="none" class="s6-x" stroke-dasharray="100 120" stroke-dashoffset="110" />
+        <path d="M540 -20 L-20 400" pathLength="100" stroke="#e5322d" stroke-width="34" stroke-linecap="round" fill="none" class="s6-x" stroke-dasharray="100 120" stroke-dashoffset="110" />
+      </svg>
+      <div id="s6-t1" class="big"><span class="w">Not</span> <span class="w">just</span> <span class="w">a</span><br /><span class="w">pretty</span> <span class="w">picture.</span></div>
+    </div>
+
+    <!-- "A real, live, working website, built from the one you already have." -->
+    <div id="s6-b" class="clip layer" data-start="2.05" data-duration="5.05" data-track-index="1" data-layout-allow-overflow data-layout-allow-overlap>
+      <svg id="s6-old" class="ico" viewBox="0 0 420 300" aria-hidden="true">
+        <rect x="6" y="6" width="408" height="288" fill="#c0c0c0" stroke="#111" stroke-width="10" />
+        <rect x="11" y="11" width="398" height="34" fill="#000080" />
+        <rect x="30" y="62" width="160" height="110" fill="#8a8a8a" />
+        <rect x="210" y="66" width="170" height="22" fill="#cc0000" />
+        <rect x="210" y="100" width="120" height="10" fill="#0000ee" /><rect x="210" y="120" width="150" height="10" fill="#0000ee" />
+        <rect x="30" y="196" width="360" height="26" fill="#ffcc00" />
+        <rect x="30" y="240" width="110" height="20" fill="#000" />
+      </svg>
+      <svg id="s6-arrow" class="ico" viewBox="0 0 200 140" aria-hidden="true">
+        <path d="M10 70 L150 70 M110 24 L160 70 L110 116" stroke="#111" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      </svg>
+      <svg id="s6-new" class="ico" viewBox="0 0 640 440" aria-hidden="true">
+        <rect x="8" y="8" width="624" height="424" rx="24" fill="#fff" stroke="#111" stroke-width="12" />
+        <path d="M8 74 L8 32 Q8 8 32 8 L608 8 Q632 8 632 32 L632 74 Z" fill="#111" />
+        <rect x="470" y="22" width="134" height="38" rx="19" fill="#fff" />
+        <circle id="s6-dot" cx="496" cy="41" r="11" fill="#21b36b" />
+        <text x="566" y="54" text-anchor="middle" font-family="Archivo Black" font-size="28" fill="#111" data-layout-ignore>LIVE</text>
+        <rect x="40" y="104" width="560" height="170" rx="10" fill="#ffd23f" stroke="#111" stroke-width="6" />
+        <rect x="70" y="140" width="290" height="34" rx="6" fill="#111" /><rect x="70" y="188" width="210" height="20" rx="6" fill="#111" opacity="0.45" />
+        <rect x="70" y="224" width="140" height="34" rx="6" fill="#111" />
+        <rect x="40" y="296" width="172" height="104" rx="10" fill="#fff" stroke="#111" stroke-width="6" />
+        <rect x="234" y="296" width="172" height="104" rx="10" fill="#fff" stroke="#111" stroke-width="6" />
+        <rect x="428" y="296" width="172" height="104" rx="10" fill="#fff" stroke="#111" stroke-width="6" />
+      </svg>
+      <div id="s6-t2" class="big"><span class="w">A</span> <span class="w">real,</span> <span class="w hl">live,</span><br /><span class="w">working</span> <span class="w">website</span></div>
+      <div id="s6-kicker" class="kicker">…built from the one you already have.</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s6-ground", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.4, ease: "power2.inOut" }, 0);
+
+      // A picture of a website... crossed out.
+      tl.fromTo("#s6-pic", { scale: 0.6, rotation: 8, opacity: 0 }, { scale: 1, rotation: -3, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.25);
+      tl.fromTo("#s6-t1 .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.12, ease: "power2.out" }, 0.28);
+      tl.fromTo(".s6-x", { attr: { "stroke-dashoffset": 110 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.2, stagger: 0.14, ease: "power3.out" }, 1.25);
+      tl.to(["#s6-pic", "#s6-t1"], { opacity: 0, filter: "blur(10px)", duration: 0.16, ease: "power2.in" }, 1.98);
+
+      // A real one, live.
+      tl.fromTo("#s6-new", { x: -150, scale: 0.7, opacity: 0, filter: "blur(10px)" },
+        { x: -150, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 2.1);
+      tl.fromTo("#s6-dot", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 2.75);
+      tl.fromTo("#s6-t2 .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.16, ease: "power2.out" }, 2.15);
+
+      // ...built from the old one: the old site appears on the left and flows into the new one.
+      tl.to("#s6-new", { x: 250, scale: 0.86, duration: 0.5, ease: "power2.inOut" }, 4.45);
+      tl.fromTo("#s6-old", { x: -200, opacity: 0, rotation: -10 }, { x: -60, opacity: 1, rotation: -5, duration: 0.5, ease: "expo.out" }, 4.55);
+      tl.fromTo("#s6-arrow", { x: -40, opacity: 0, scaleX: 0.3, transformOrigin: "0% 50%" }, { x: 10, opacity: 1, scaleX: 1, duration: 0.35, ease: "expo.out" }, 4.85);
+      tl.fromTo("#s6-kicker", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 4.6);
+      // Clear the stage as the next scene floods in.
+      tl.to(["#s6-old", "#s6-arrow", "#s6-new", "#s6-t2", "#s6-kicker"], { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }, 6.62);
+      window.__timelines["s6-real"] = tl;
+    })();
+  </script>
+</template>

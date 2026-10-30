@@ -1,0 +1,98 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #s1-ground {
+      position: absolute;
+      inset: 0;
+      background: var(--color-accent, #ffd23f);
+    }
+    #s1-mega {
+      left: 730px;
+      top: 110px;
+      width: 440px;
+      height: 340px;
+    }
+    #s1-hey-1 {
+      top: 520px;
+      font-size: 170px;
+      color: var(--color-ink, #111111);
+    }
+    #s1-hey-2 {
+      top: 700px;
+      font-size: 128px;
+      color: var(--color-ink, #111111);
+    }
+    #s1-burst {
+      left: 385px;
+      top: -35px;
+      width: 1150px;
+      height: 1150px;
+    }
+    #s1-yes {
+      top: 270px;
+      font-size: 130px;
+      color: var(--color-ink, #111111);
+    }
+    #s1-you {
+      top: 445px;
+      font-size: 290px;
+      color: var(--color-ink, #111111);
+    }
+  </style>
+
+  <div id="root" data-composition-id="s1-hey" data-width="1920" data-height="1080">
+    <div id="s1-ground"></div>
+
+    <!-- Beat 1: "Hey, business owner!" -->
+    <div id="s1-a" class="clip layer" data-start="0" data-duration="2.05" data-track-index="0" data-layout-allow-overflow>
+      <svg id="s1-mega" class="ico" viewBox="0 0 440 340" aria-hidden="true">
+        <rect x="118" y="196" width="54" height="104" rx="14" fill="#111" />
+        <rect x="26" y="106" width="52" height="128" rx="16" fill="#e5322d" stroke="#111" stroke-width="12" />
+        <path d="M72 118 L130 118 L318 36 L318 304 L130 222 L72 222 Z" fill="#fff" stroke="#111" stroke-width="12" stroke-linejoin="round" />
+        <ellipse cx="318" cy="170" rx="28" ry="134" fill="#111" />
+        <path class="s1-wave" d="M372 118 Q402 170 372 222" pathLength="100" stroke="#111" stroke-width="14" stroke-linecap="round" fill="none" stroke-dasharray="100 120" stroke-dashoffset="110" />
+        <path class="s1-wave" d="M402 80 Q450 170 402 260" pathLength="100" stroke="#111" stroke-width="14" stroke-linecap="round" fill="none" stroke-dasharray="100 120" stroke-dashoffset="110" />
+        <path class="s1-wave" d="M434 42 Q500 170 434 298" pathLength="100" stroke="#111" stroke-width="14" stroke-linecap="round" fill="none" stroke-dasharray="100 120" stroke-dashoffset="110" />
+      </svg>
+      <div id="s1-hey-1" class="big"><span class="w">Hey,</span></div>
+      <div id="s1-hey-2" class="big"><span class="w">business</span> <span class="w hl-ink">owner!</span></div>
+    </div>
+
+    <!-- Beat 2: "Yes, you!" -->
+    <div id="s1-b" class="clip layer" data-start="1.95" data-duration="1.85" data-track-index="1" data-layout-allow-overflow data-layout-allow-overlap>
+      <svg id="s1-burst" class="ico" viewBox="0 0 920 920" aria-hidden="true">
+        <polygon points="460,0 530,107 636,35 660,161 785,135 759,260 885,284 813,390 920,460 813,530 885,636 759,660 785,785 660,759 636,885 530,813 460,920 390,813 284,885 260,759 135,785 161,660 35,636 107,530 0,460 107,390 35,284 161,260 135,135 260,161 284,35 390,107" fill="#fff" stroke="#111" stroke-width="12" stroke-linejoin="round" />
+      </svg>
+      <div id="s1-yes" class="big"><span class="w">Yes,</span></div>
+      <div id="s1-you" class="big"><span class="w">you!</span></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Beat 1: the megaphone is already up on frame one, then calls out.
+      tl.fromTo("#s1-mega", { scale: 0.86, rotation: -6 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.8)" }, 0);
+      tl.fromTo(".s1-wave", { attr: { "stroke-dashoffset": 110 } },
+        { attr: { "stroke-dashoffset": 0 }, duration: 0.22, stagger: 0.09, ease: "power2.out" }, 0.38);
+      tl.fromTo("#s1-hey-1 .w", { opacity: 0, filter: "blur(10px)", scale: 1.25 },
+        { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.2, ease: "power4.out" }, 0.4);
+      tl.fromTo("#s1-hey-2 .w", { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.16, ease: "power2.out" }, 0.72);
+      // Whip up and out.
+      tl.to(["#s1-mega", "#s1-hey-1", "#s1-hey-2"], { y: -900, filter: "blur(14px)", duration: 0.3, ease: "power3.in", stagger: 0.03 }, 1.7);
+
+      // Beat 2: a burst slams in behind a giant YOU.
+      tl.fromTo("#s1-burst", { scale: 0.2, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(1.5)" }, 1.98);
+      tl.to("#s1-burst", { rotation: 12, duration: 1.4, ease: "none" }, 2.43);
+      tl.fromTo("#s1-yes .w", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.25, ease: "expo.out" }, 2.05);
+      tl.fromTo("#s1-you .w", { opacity: 0, scale: 2.2, filter: "blur(12px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power4.out" }, 2.3);
+      window.__timelines["s1-hey"] = tl;
+    })();
+  </script>
+</template>

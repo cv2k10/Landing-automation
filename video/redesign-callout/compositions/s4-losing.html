@@ -1,0 +1,77 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #s4-ground {
+      position: absolute;
+      inset: 0;
+      background: var(--color-alert, #e5322d);
+    }
+    #s4-kicker {
+      top: 120px;
+      color: #ffffff;
+      font-size: 60px;
+    }
+    #s4-crowd {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 250px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      gap: 46px;
+    }
+    #s4-crowd svg {
+      width: 150px;
+      height: 280px;
+      overflow: visible;
+    }
+    #s4-t {
+      top: 620px;
+      font-size: 150px;
+      color: #ffffff;
+    }
+    #s4-t .hl-ink {
+      color: #ffffff;
+    }
+  </style>
+
+  <div id="root" data-composition-id="s4-losing" data-width="1920" data-height="1080">
+    <div id="s4-ground"></div>
+    <div id="s4-content" class="clip layer" data-start="0.15" data-duration="3.85" data-track-index="0" data-layout-allow-overflow>
+      <div id="s4-kicker" class="kicker">Every day it stays that way…</div>
+      <div id="s4-crowd">
+        <svg class="s4-p" viewBox="0 0 150 280" aria-hidden="true"><circle cx="75" cy="58" r="46" fill="#fff" stroke="#111" stroke-width="10" /><path d="M10 270 Q10 124 75 124 Q140 124 140 270 Z" fill="#fff" stroke="#111" stroke-width="10" stroke-linejoin="round" /></svg>
+        <svg class="s4-p" viewBox="0 0 150 280" aria-hidden="true"><circle cx="75" cy="58" r="46" fill="#ffd23f" stroke="#111" stroke-width="10" /><path d="M10 270 Q10 124 75 124 Q140 124 140 270 Z" fill="#ffd23f" stroke="#111" stroke-width="10" stroke-linejoin="round" /></svg>
+        <svg class="s4-p" viewBox="0 0 150 280" aria-hidden="true"><circle cx="75" cy="58" r="46" fill="#fff" stroke="#111" stroke-width="10" /><path d="M10 270 Q10 124 75 124 Q140 124 140 270 Z" fill="#fff" stroke="#111" stroke-width="10" stroke-linejoin="round" /></svg>
+        <svg class="s4-p" viewBox="0 0 150 280" aria-hidden="true"><circle cx="75" cy="58" r="46" fill="#ffd23f" stroke="#111" stroke-width="10" /><path d="M10 270 Q10 124 75 124 Q140 124 140 270 Z" fill="#ffd23f" stroke="#111" stroke-width="10" stroke-linejoin="round" /></svg>
+        <svg class="s4-p" viewBox="0 0 150 280" aria-hidden="true"><circle cx="75" cy="58" r="46" fill="#fff" stroke="#111" stroke-width="10" /><path d="M10 270 Q10 124 75 124 Q140 124 140 270 Z" fill="#fff" stroke="#111" stroke-width="10" stroke-linejoin="round" /></svg>
+        <svg class="s4-p" viewBox="0 0 150 280" aria-hidden="true"><circle cx="75" cy="58" r="46" fill="#ffd23f" stroke="#111" stroke-width="10" /><path d="M10 270 Q10 124 75 124 Q140 124 140 270 Z" fill="#ffd23f" stroke="#111" stroke-width="10" stroke-linejoin="round" /></svg>
+      </div>
+      <div id="s4-t" class="big"><span class="w">You're</span> <span class="w">losing</span><br /><span class="w hl-ink">business.</span></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Red irises open from the centre.
+      tl.fromTo("#s4-ground", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.4, ease: "power2.inOut" }, 0);
+      tl.fromTo("#s4-kicker", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0.25);
+      // Your customers line up...
+      tl.fromTo(".s4-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, stagger: 0.05, ease: "expo.out" }, 0.3);
+      // ...and walk out one by one; one is left.
+      const leave = [5, 2, 4, 0, 3];
+      leave.forEach((idx, k) => {
+        tl.to(`#s4-crowd .s4-p:nth-child(${idx + 1})`, { x: 220, opacity: 0, duration: 0.32, ease: "power3.in" }, 1.0 + k * 0.26);
+      });
+      tl.fromTo("#s4-t .w", { opacity: 0, filter: "blur(10px)", y: 30 },
+        { opacity: 1, filter: "blur(0px)", y: 0, duration: 0.2, stagger: 0.17, ease: "power4.out" }, 2.15);
+      window.__timelines["s4-losing"] = tl;
+    })();
+  </script>
+</template>

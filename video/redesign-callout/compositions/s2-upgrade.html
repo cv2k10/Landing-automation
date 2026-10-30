@@ -1,0 +1,128 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #s2-ground {
+      position: absolute;
+      inset: 0;
+      background: var(--color-paper, #ffffff);
+    }
+    #s2-kicker {
+      top: 130px;
+      color: var(--color-ink, #111111);
+      font-size: 60px;
+    }
+    #s2-title {
+      top: 215px;
+      font-size: 200px;
+      color: var(--color-ink, #111111);
+    }
+    /* Calendar, drawn in CSS */
+    #s2-cal {
+      position: absolute;
+      left: 760px;
+      top: 470px;
+      width: 400px;
+      height: 400px;
+      background: #ffffff;
+      border: 12px solid #111111;
+      border-radius: 30px;
+      box-shadow: 16px 16px 0 #111111;
+      overflow: hidden;
+    }
+    #s2-cal .head {
+      height: 96px;
+      background: var(--color-alert, #e5322d);
+      border-bottom: 12px solid #111111;
+      color: #ffffff;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 44px;
+      line-height: 86px;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+    #s2-cal .window {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+    }
+    #s2-years {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+    #s2-years div {
+      height: 280px;
+      line-height: 280px;
+      text-align: center;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 130px;
+      color: #111111;
+    }
+    .s2-ring {
+      position: absolute;
+      top: 440px;
+      width: 34px;
+      height: 74px;
+      border-radius: 17px;
+      background: #111111;
+    }
+    #s2-q {
+      position: absolute;
+      left: 1150px;
+      top: 430px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: var(--color-accent, #ffd23f);
+      border: 10px solid #111111;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 100px;
+      line-height: 128px;
+      text-align: center;
+      color: #111111;
+    }
+  </style>
+
+  <div id="root" data-composition-id="s2-upgrade" data-width="1920" data-height="1080">
+    <div id="s2-ground"></div>
+    <div id="s2-content" class="clip layer" data-start="0.15" data-duration="3.45" data-track-index="0" data-layout-allow-overflow data-layout-allow-overlap>
+      <div id="s2-kicker" class="kicker">When did your website last get an…</div>
+      <div id="s2-title" class="big"><span class="w hl">upgrade?</span></div>
+      <div id="s2-cal-wrap">
+        <div class="s2-ring" style="left: 850px"></div>
+        <div class="s2-ring" style="left: 1036px"></div>
+        <div id="s2-cal">
+          <div class="head">LAST UPDATE</div>
+          <div class="window">
+            <div id="s2-years" data-layout-allow-occlusion><div data-layout-ignore>2025</div><div data-layout-ignore>2022</div><div data-layout-ignore>2019</div><div data-layout-ignore>2016</div><div>2014</div></div>
+          </div>
+        </div>
+        <div id="s2-q" data-layout-allow-occlusion>?</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // White floods in from the right over the yellow.
+      tl.fromTo("#s2-ground", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.36, ease: "power2.inOut" }, 0);
+      tl.fromTo("#s2-kicker", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0.25);
+      tl.fromTo("#s2-title .w", { opacity: 0, y: 60, filter: "blur(10px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 1.2);
+      tl.fromTo("#s2-cal-wrap", { y: 520 }, { y: 0, duration: 0.6, ease: "expo.out" }, 0.4);
+      // The year rolls back like a slot machine and lands on 2014.
+      [0, 1, 2, 3, 4].forEach((i) => {
+        if (i === 0) return;
+        tl.to("#s2-years", { y: -280 * i, duration: i === 4 ? 0.36 : 0.16, ease: i === 4 ? "back.out(1.6)" : "power2.inOut" }, 1.0 + (i - 1) * 0.3);
+      });
+      tl.fromTo("#s2-q", { scale: 0, rotation: -40 }, { scale: 1, rotation: 12, duration: 0.4, ease: "back.out(2)" }, 2.1);
+      window.__timelines["s2-upgrade"] = tl;
+    })();
+  </script>
+</template>

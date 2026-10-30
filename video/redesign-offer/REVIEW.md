@@ -51,14 +51,11 @@ The final mix was loudness-normalised to -15 LUFS / -1.5 dBTP (no clipping, meas
   phone width. The old-site body text does not, and doesn't need to: it is texture there.
 - Sound: voiceover plus 16 SFX hits (whooshes on transitions, pops on stamps/LIVE chips, clicks on cursor
   clicks, one riser → impact on the FREE badge). Each was placed from its measured peak.
-  **Measured, not heard.** There is **no music bed**: this environment has no music source
-  (no HeyGen sign-in, no local MusicGen). To add one, drop a track in `assets/` and add an
-  `<audio id="bgm" data-volume="0.25" data-fade-in="0.4" data-fade-out="1.5">` to `index.html`.
+  **Measured, not heard.** Music bed: an original track generated locally with MusicGen
+  (`assets/bgm/bed.mp3`), looped from its strongest section, about 10 dB under the voice.
 
 ## Weakest shot / next steps
 
-- The hook (2.0–5.1 s) has about 3 s with no voice while the owner montage plays; a music bed
-  would fill it.
 - Kokoro is a free local voice: clear and natural, but less expressive than a premium voice
   (HeyGen / ElevenLabs). Re-voicing only means swapping the 20 files in `assets/vo/`.
 - s3 (11.6–15.6 s) is the thinnest beat: one photo plus a tab being closed. A real analytics

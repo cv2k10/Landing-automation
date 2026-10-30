@@ -1,0 +1,147 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #s8-ground {
+      position: absolute;
+      inset: 0;
+      background: var(--color-accent, #ffd23f);
+    }
+    #s8-clock {
+      left: 810px;
+      top: 90px;
+      width: 300px;
+      height: 320px;
+    }
+    #s8-wait {
+      top: 520px;
+      font-size: 190px;
+      color: var(--color-ink, #111111);
+    }
+    #s8-head {
+      top: 130px;
+      font-size: 130px;
+      color: var(--color-ink, #111111);
+    }
+    #s8-head .hl-ink {
+      color: var(--color-accent, #ffd23f);
+    }
+    #s8-btn-row {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 500px;
+      text-align: center;
+    }
+    #s8-btn {
+      display: inline-block;
+      padding: 40px 64px 34px;
+      background: var(--color-ink, #111111);
+      color: #ffffff;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 72px;
+      line-height: 1;
+      text-transform: uppercase;
+      box-shadow: 14px 14px 0 #ffffff;
+      white-space: nowrap;
+    }
+    #s8-msg-row {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 740px;
+      text-align: center;
+    }
+    #s8-msg {
+      display: inline-flex;
+      align-items: center;
+      gap: 22px;
+      padding: 22px 40px;
+      background: var(--color-go, #21b36b);
+      color: #111111;
+      border: 8px solid #111111;
+      border-radius: 40px 40px 8px 40px;
+      font-family: "Outfit", sans-serif;
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 1;
+    }
+    #s8-msg small {
+      font-size: 34px;
+      font-weight: 500;
+      opacity: 0.95;
+    }
+    #s8-cursor {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 74px;
+      height: 104px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="s8-cta" data-width="1920" data-height="1080">
+    <div id="s8-ground"></div>
+
+    <!-- "Don't wait." -->
+    <div id="s8-a" class="clip layer" data-start="0.15" data-duration="0.95" data-track-index="0" data-layout-allow-overflow>
+      <svg id="s8-clock" class="ico" viewBox="0 0 300 320" aria-hidden="true">
+        <circle cx="70" cy="62" r="44" fill="#e5322d" stroke="#111" stroke-width="12" />
+        <circle cx="230" cy="62" r="44" fill="#e5322d" stroke="#111" stroke-width="12" />
+        <line x1="70" y1="270" x2="40" y2="306" stroke="#111" stroke-width="16" stroke-linecap="round" />
+        <line x1="230" y1="270" x2="260" y2="306" stroke="#111" stroke-width="16" stroke-linecap="round" />
+        <circle cx="150" cy="180" r="120" fill="#fff" stroke="#111" stroke-width="14" />
+        <line x1="150" y1="180" x2="150" y2="100" stroke="#111" stroke-width="14" stroke-linecap="round" />
+        <line x1="150" y1="180" x2="205" y2="205" stroke="#e5322d" stroke-width="12" stroke-linecap="round" />
+        <circle cx="150" cy="180" r="12" fill="#111" />
+      </svg>
+      <div id="s8-wait" class="big"><span class="w">Don't</span> <span class="w">wait.</span></div>
+    </div>
+
+    <!-- "Claim your free redesign today. Reply 'redesign' now!" -->
+    <div id="s8-b" class="clip layer" data-start="1.0" data-duration="6.0" data-track-index="1" data-layout-allow-overflow>
+      <div id="s8-head" class="big"><span class="w">Claim</span> <span class="w">your</span> <span class="w hl-ink">free</span><br /><span class="w">redesign</span> <span class="w">today.</span></div>
+      <div id="s8-btn-row"><div id="s8-btn">Reply “redesign” now →</div></div>
+      <div id="s8-msg-row"><div id="s8-msg">REDESIGN <small>✓✓ Sent</small></div></div>
+    </div>
+
+    <div id="s8-cursor-clip" class="clip" data-start="2.95" data-duration="4.05" data-track-index="2" data-layout-allow-overflow style="position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible">
+      <svg id="s8-cursor" viewBox="0 0 30 42" aria-hidden="true">
+        <path d="M2 2 L2 34 L10 26 L16 40 L22 37 L16 24 L27 24 Z" fill="#111111" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // The rocket's yellow floods up from the bottom.
+      tl.fromTo("#s8-ground", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.4, ease: "power2.inOut" }, 0);
+
+      // Don't wait: the alarm clock rings.
+      tl.fromTo("#s8-clock", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 0.15);
+      tl.to("#s8-clock", { rotation: 8, duration: 0.05, ease: "none", yoyo: true, repeat: 7 }, 0.45);
+      tl.fromTo("#s8-wait .w", { opacity: 0, scale: 1.6, filter: "blur(10px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.2, stagger: 0.2, ease: "power4.out" }, 0.22);
+      tl.to(["#s8-clock", "#s8-wait"], { y: -260, opacity: 0, filter: "blur(10px)", duration: 0.2, ease: "power3.in" }, 0.88);
+
+      // Claim your free redesign today.
+      tl.fromTo("#s8-head .w", { opacity: 0, y: 40, filter: "blur(8px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.22, stagger: 0.14, ease: "expo.out" }, 1.05);
+      // The button lands; the cursor presses it on "redesign".
+      tl.fromTo("#s8-btn", { y: 120, opacity: 0, filter: "blur(12px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 2.85);
+      tl.fromTo("#s8-cursor", { x: 1900, y: 1000, transformOrigin: "0% 0%" }, { x: 1470, y: 610, duration: 0.6, ease: "power3.inOut" }, 3.0);
+      tl.to("#s8-cursor", { scale: 0.85, duration: 0.07, ease: "power2.in" }, 3.61);
+      tl.to("#s8-btn", { x: 10, y: 10, boxShadow: "4px 4px 0 #ffffff", duration: 0.07, ease: "power2.in" }, 3.61);
+      tl.to("#s8-cursor", { scale: 1, duration: 0.16, ease: "power2.out" }, 3.68);
+      tl.to("#s8-btn", { x: 0, y: 0, boxShadow: "14px 14px 0 #ffffff", duration: 0.22, ease: "power2.out" }, 3.68);
+      // Message sent.
+      tl.fromTo("#s8-msg", { scale: 0.3, opacity: 0, transformOrigin: "100% 100%" }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 3.85);
+      tl.to("#s8-cursor", { x: 1700, y: 930, duration: 0.6, ease: "power2.inOut" }, 4.3);
+      window.__timelines["s8-cta"] = tl;
+    })();
+  </script>
+</template>

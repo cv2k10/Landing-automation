@@ -1,6 +1,6 @@
 # Redesign Offer — promo video (HyperFrames)
 
-A 45.5-second, 1920×1080 promo with an American male voiceover and matching captions, aimed at business owners whose website needs a refresh:
+A 45.5-second, 1920×1080 promo with an American male voiceover, matching captions and a music bed, aimed at business owners whose website needs a refresh:
 **we rebuild your existing site as a real, fully functional, live website — fast and free —
 not just a redesign image.**
 

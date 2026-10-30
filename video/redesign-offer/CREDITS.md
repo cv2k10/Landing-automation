@@ -26,6 +26,13 @@ commercial use, no attribution required).
 `assets/vo/*.wav` were synthesised locally with Kokoro-82M (Apache-2.0), voice `am_michael`,
 via `npx hyperframes tts`.
 
+## Music
+
+`assets/bgm/bed.mp3` is an original track generated locally with Meta MusicGen
+(`facebook/musicgen-small`), looped and levelled. **The MusicGen weights are licensed
+CC-BY-NC 4.0 (non-commercial), so treat this bed as a placeholder:** before running the ad
+commercially, replace it with a track you hold a commercial licence for (same file name, re-render).
+
 ## Sample business
 
 "Corner Café" and `yourbusiness.com` are a fictional example used to demonstrate a redesign.
