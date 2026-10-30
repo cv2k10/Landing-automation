@@ -39,7 +39,7 @@ npx hyperframes@0.8.221 render -o renders/redesign-callout.mp4
 | `assets/vo/l01–l17.wav` | Voiceover lines (Kokoro `am_michael`) |
 | `assets/bgm/bed.mp3` | Music bed |
 | `assets/brand/dw-logo.png` | DW logo, original colours, background removed |
-| `assets/brand/dw-logo-style.png` | DW logo recoloured to the video palette (yellow/ink, white die-cut edge); shown top-right on an ink tile for the whole video |
+| `assets/brand/dw-logo-style.png` | DW logo recoloured to the video palette (yellow/ink, white die-cut edge); shown small (120 px) top-right with a transparent background for the whole video |
 
 Re-voice a line: `npx hyperframes@0.8.221 tts "New line" -v am_michael -s 1.08 -o assets/vo/l05.wav`
 (needs `pip install kokoro-onnx soundfile`), then update its `data-duration` in `index.html` and
