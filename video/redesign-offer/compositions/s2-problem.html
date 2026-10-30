@@ -1,0 +1,246 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #111111;
+    }
+    #root .bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #root .bg img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      object-fit: cover;
+    }
+    /* ---- The old website window ---- */
+    #s2-win {
+      position: absolute;
+      left: 320px;
+      top: 64px;
+      width: 1280px;
+      height: 720px;
+      background: #c0c0c0;
+      border: 3px solid #dfdfdf;
+      border-right-color: #404040;
+      border-bottom-color: #404040;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+    #s2-win .titlebar {
+      height: 44px;
+      background: linear-gradient(90deg, #000080, #1084d0);
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 44px;
+      padding-left: 14px;
+    }
+    #s2-win .address {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 12px;
+      font-family: Arial, sans-serif;
+      font-size: 28px;
+      color: #000;
+      border-bottom: 2px solid #808080;
+    }
+    #s2-win .address .field {
+      flex: 1;
+      background: #fff;
+      border: 2px inset #808080;
+      padding: 4px 8px;
+    }
+    #s2-win .page {
+      position: absolute;
+      top: 94px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #d6d0c4;
+      background-image: radial-gradient(#b9b2a3 2px, transparent 2px);
+      background-size: 18px 18px;
+      font-family: "Times New Roman", Times, serif;
+      color: #000;
+      overflow: hidden;
+    }
+    #s2-win .marquee {
+      height: 52px;
+      background: #000;
+      color: #ffff00;
+      font-size: 32px;
+      line-height: 52px;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+    }
+    #s2-marquee {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    #s2-win .row {
+      display: flex;
+      gap: 36px;
+      padding: 28px 44px 0;
+    }
+    #s2-win .row img {
+      width: 330px;
+      height: 220px;
+      object-fit: cover;
+      border: 6px ridge #808080;
+    }
+    #s2-win h1 {
+      font-size: 64px;
+      color: #cc0000;
+      font-style: italic;
+      line-height: 1.05;
+    }
+    #s2-win p {
+      font-size: 30px;
+      margin-top: 10px;
+    }
+    #s2-win a {
+      color: #0000ee;
+      text-decoration: underline;
+    }
+    #s2-win .construction {
+      margin: 26px 44px 0;
+      height: 56px;
+      background: repeating-linear-gradient(45deg, #ffcc00 0 28px, #000 28px 56px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #s2-win .construction span {
+      background: #ffcc00;
+      color: #000;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      padding: 2px 16px;
+    }
+    #s2-win .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 44px 0;
+      font-size: 28px;
+    }
+    #s2-win .counter span {
+      background: #000;
+      color: #33ff33;
+      font-family: "Courier New", monospace;
+      padding: 2px 8px;
+      letter-spacing: 4px;
+    }
+    #s2-win .loading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: Arial, sans-serif;
+      font-size: 28px;
+    }
+    #s2-win .loading .track {
+      width: 260px;
+      height: 26px;
+      border: 2px inset #808080;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    #s2-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 260px;
+      background: #000080;
+      transform-origin: 0 50%;
+    }
+    #root .layer {
+      position: absolute;
+      inset: 0;
+    }
+    /* ---- Problem stamps ---- */
+    #root .stamp {
+      position: absolute;
+      padding: 10px 22px 8px;
+      border: 7px solid var(--color-alert, #e5322d);
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--color-alert, #e5322d);
+      font-family: "Archivo Black", sans-serif;
+      font-size: 52px;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="s2-problem" data-width="1920" data-height="1080">
+    <div id="s2-bg" class="clip bg" data-start="0" data-duration="6.4" data-track-index="0">
+      <img id="s2-bg-img" src="assets/broll/laptop-bw.jpg" alt="Hands on a laptop keyboard, black and white" />
+    </div>
+
+    <div id="s2-win-clip" class="clip layer" data-start="0.8" data-duration="5.6" data-track-index="1" data-layout-allow-overflow>
+      <div id="s2-win">
+        <div class="titlebar">Welcome to Our Website!!!</div>
+        <div class="address"><span>Address</span><span class="field">http://www.yourbusiness.com/index.htm</span></div>
+        <div class="page">
+          <div class="marquee" data-layout-allow-overlap><span id="s2-marquee">~*~ WELCOME TO OUR WEBSITE!!! ~*~ Best viewed in 800x600 ~*~ Sign our GUESTBOOK ~*~</span></div>
+          <div class="row">
+            <img src="assets/broll/cafe-street-oldsite.jpg" alt="Low-resolution café photo" />
+            <div>
+              <h1>Corner Café</h1>
+              <p>Click <a>HERE</a> to see our menu!!</p>
+              <p><a>Home</a> | <a>About Us</a> | <a>Contact</a> | <a>Guestbook</a></p>
+            </div>
+          </div>
+          <div class="construction"><span>UNDER CONSTRUCTION</span></div>
+          <div class="footer">
+            <div class="counter">Visitors: <span>000427</span></div>
+            <div class="loading">Loading… <div class="track"><div id="s2-bar"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s2-stamp-1-clip" class="clip layer" data-start="1.9" data-duration="4.5" data-track-index="2"><div id="s2-stamp-1" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap style="left: 230px; top: 150px">Outdated</div></div>
+    <div id="s2-stamp-2-clip" class="clip layer" data-start="2.5" data-duration="3.9" data-track-index="3"><div id="s2-stamp-2" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap style="left: 1440px; top: 360px">Slow</div></div>
+    <div id="s2-stamp-3-clip" class="clip layer" data-start="3.1" data-duration="3.3" data-track-index="4"><div id="s2-stamp-3" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap style="left: 250px; top: 640px">Not mobile-friendly</div></div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s2-bg-img", { scale: 1.0 }, { scale: 1.07, duration: 6.4, ease: "none" }, 0);
+
+      // The old site rises into frame and settles.
+      tl.fromTo("#s2-win", { y: 160, opacity: 0, filter: "blur(12px)" },
+        { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, 0.8);
+      // Marquee crawls; the loading bar barely moves.
+      tl.fromTo("#s2-marquee", { x: 1280 }, { x: -1500, duration: 5.6, ease: "none" }, 0.8);
+      tl.fromTo("#s2-bar", { scaleX: 0.03 }, { scaleX: 0.14, duration: 5.2, ease: "power1.out" }, 0.9);
+
+      // Stamps slam on.
+      [["#s2-stamp-1", 1.9, -7], ["#s2-stamp-2", 2.5, 6], ["#s2-stamp-3", 3.1, -4]].forEach(([sel, t, rot]) => {
+        tl.fromTo(sel, { scale: 1.6, rotation: rot * 2, opacity: 0 },
+          { scale: 1, rotation: rot, opacity: 1, duration: 0.22, ease: "power4.out" }, t);
+      });
+
+      // Whip everything up and out into the next scene.
+      tl.to(["#s2-win", "#s2-stamp-1", "#s2-stamp-2", "#s2-stamp-3"],
+        { y: -1000, filter: "blur(16px)", duration: 0.38, ease: "power3.in", stagger: 0.02 }, 6.0);
+      window.__timelines["s2-problem"] = tl;
+    })();
+  </script>
+</template>

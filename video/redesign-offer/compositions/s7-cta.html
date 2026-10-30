@@ -1,0 +1,139 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #111111;
+    }
+    #root .layer {
+      position: absolute;
+      inset: 0;
+    }
+    #s7-bg {
+      overflow: hidden;
+    }
+    #s7-bg img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      object-fit: cover;
+    }
+    #s7-card {
+      position: absolute;
+      inset: 0;
+      background: var(--color-accent, #ffd23f);
+      color: var(--color-ink, #111111);
+    }
+    #s7-card .h {
+      position: absolute;
+      left: 160px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 132px;
+      line-height: 1;
+      letter-spacing: -0.025em;
+      white-space: nowrap;
+    }
+    #s7-card .h .w {
+      display: inline-block;
+    }
+    #s7-hl {
+      display: inline-block;
+      background: var(--color-ink, #111111);
+      color: var(--color-accent, #ffd23f);
+      padding: 8px 26px 4px;
+    }
+    #s7-sub {
+      position: absolute;
+      left: 164px;
+      top: 556px;
+      font-family: "Outfit", sans-serif;
+      font-weight: 500;
+      font-size: 48px;
+    }
+    #s7-btn {
+      position: absolute;
+      left: 160px;
+      top: 690px;
+      padding: 30px 48px 28px;
+      background: var(--color-ink, #111111);
+      color: #ffffff;
+      font-family: "Outfit", sans-serif;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 1;
+      box-shadow: 12px 12px 0 #ffffff;
+      white-space: nowrap;
+    }
+    #s7-cursor {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 66px;
+      height: 92px;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="s7-cta"
+    data-width="1920"
+    data-height="1080"
+    data-composition-variables='[
+      {"id":"cta-text","type":"string","label":"Call to action","default":"Reply “REDESIGN” to claim yours →"},
+      {"id":"subline","type":"string","label":"Subline","default":"Fast. Free. Built from your existing site."}
+    ]'
+  >
+    <div id="s7-bg" class="clip layer" data-start="0" data-duration="2.75" data-track-index="0">
+      <img id="s7-bg-img" src="assets/broll/high-five.jpg" alt="Two business owners high-fiving over a laptop" />
+    </div>
+
+    <div id="s7-card-clip" class="clip layer" data-start="2.3" data-duration="5.1" data-track-index="1">
+      <div id="s7-card">
+        <div class="h" style="top: 210px"><span class="w">Your</span> <span class="w">website,</span></div>
+        <div class="h" style="top: 366px"><span class="w">redesigned</span> <span class="w">&amp;</span> <span id="s7-hl">live.</span></div>
+        <div id="s7-sub" data-var-text="subline">Fast. Free. Built from your existing site.</div>
+        <div id="s7-btn" data-var-text="cta-text">Reply “REDESIGN” to claim yours →</div>
+      </div>
+    </div>
+
+    <div id="s7-cursor-clip" class="clip" data-start="4.3" data-duration="3.1" data-track-index="2" data-layout-allow-overflow style="position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible">
+      <svg id="s7-cursor" viewBox="0 0 30 42" aria-hidden="true">
+        <path d="M2 2 L2 34 L10 26 L16 40 L22 37 L16 24 L27 24 Z" fill="#111111" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s7-bg-img", { scale: 1.0, x: 0 }, { scale: 1.06, x: -30, duration: 2.75, ease: "none" }, 0);
+
+      // Iris opens from the high-five onto the end card.
+      tl.fromTo("#s7-card", { clipPath: "circle(0% at 50% 42%)" },
+        { clipPath: "circle(120% at 50% 42%)", duration: 0.45, ease: "power2.inOut" }, 2.3);
+
+      // Headline lands word by word, then holds dead still.
+      tl.fromTo("#s7-card .h .w", { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.09, ease: "power2.out" }, 2.6);
+      tl.fromTo("#s7-hl", { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.35, ease: "expo.out" }, 3.0);
+      tl.fromTo("#s7-sub", { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 3.4);
+      tl.fromTo("#s7-btn", { y: 50, opacity: 0, filter: "blur(10px)" },
+        { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 3.75);
+
+      // The cursor clicks the call to action (41.8 s in film time).
+      tl.fromTo("#s7-cursor", { x: 1820, y: 1000, transformOrigin: "0% 0%" },
+        { x: 1046, y: 774, duration: 0.8, ease: "power3.inOut" }, 4.3);
+      tl.to("#s7-cursor", { scale: 0.86, duration: 0.07, ease: "power2.in" }, 5.13);
+      tl.to("#s7-btn", { x: 8, y: 8, boxShadow: "4px 4px 0 #ffffff", duration: 0.07, ease: "power2.in" }, 5.13);
+      tl.to("#s7-cursor", { scale: 1, duration: 0.16, ease: "power2.out" }, 5.2);
+      tl.to("#s7-btn", { x: 0, y: 0, boxShadow: "12px 12px 0 #ffffff", duration: 0.22, ease: "power2.out" }, 5.2);
+      tl.to("#s7-cursor", { x: 1180, y: 900, duration: 0.6, ease: "power2.inOut" }, 5.6);
+      window.__timelines["s7-cta"] = tl;
+    })();
+  </script>
+</template>

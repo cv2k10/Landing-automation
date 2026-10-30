@@ -1,0 +1,86 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #root .cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 96px;
+      text-align: center;
+      overflow: visible;
+    }
+    #root .cap-box {
+      display: inline-block;
+      padding: 18px 30px 16px;
+      background: var(--color-ink, #111111);
+      box-shadow: 8px 8px 0 var(--color-accent, #ffd23f);
+      font-family: "Archivo Black", sans-serif;
+      font-size: 76px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--color-paper, #ffffff);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    #root .w {
+      display: inline-block;
+    }
+    #root .w.hl {
+      background: var(--color-accent, #ffd23f);
+      color: var(--color-ink, #111111);
+      padding: 6px 14px 4px;
+      margin: -6px 0 -4px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080">
+    <!-- s1 hook -->
+    <div id="cap-01" class="clip cap" data-start="0.25" data-duration="2.2"><div class="cap-box"><span class="w">Calling</span> <span class="w">all</span></div></div>
+    <div id="cap-02" class="clip cap" data-start="2.55" data-duration="2.45"><div class="cap-box"><span class="w">business</span> <span class="w hl">owners</span></div></div>
+    <!-- s2 problem -->
+    <div id="cap-03" class="clip cap" data-start="5.45" data-duration="2.45"><div class="cap-box"><span class="w">Is</span> <span class="w">your</span> <span class="w">website</span></div></div>
+    <div id="cap-04" class="clip cap" data-start="8" data-duration="3.35"><div class="cap-box"><span class="w">holding</span> <span class="w">you</span> <span class="w hl">back?</span></div></div>
+    <!-- s3 seconds -->
+    <div id="cap-05" class="clip cap" data-start="11.8" data-duration="1.75"><div class="cap-box"><span class="w">Customers</span> <span class="w">decide</span></div></div>
+    <div id="cap-06" class="clip cap" data-start="13.6" data-duration="1.85"><div class="cap-box"><span class="w">in</span> <span class="w hl">seconds.</span></div></div>
+    <!-- s4 reveal -->
+    <div id="cap-07" class="clip cap" data-start="15.85" data-duration="1.9"><div class="cap-box"><span class="w">Now's</span> <span class="w">your</span> <span class="w">chance:</span></div></div>
+    <div id="cap-08" class="clip cap" data-start="17.85" data-duration="2.75"><div class="cap-box"><span class="w">a</span> <span class="w">redesign</span> <span class="w">—</span> <span class="w">fast</span> <span class="w">&amp;</span> <span class="w hl">free</span></div></div>
+    <!-- s5 real, live website -->
+    <div id="cap-09" class="clip cap" data-start="21" data-duration="2.45"><div class="cap-box"><span class="w">Not</span> <span class="w">just</span> <span class="w">a</span> <span class="w">redesign</span> <span class="w hl">image.</span></div></div>
+    <div id="cap-10" class="clip cap" data-start="23.55" data-duration="2.05"><div class="cap-box"><span class="w">We</span> <span class="w">take</span> <span class="w">your</span> <span class="w hl">existing</span> <span class="w">site</span></div></div>
+    <div id="cap-11" class="clip cap" data-start="25.7" data-duration="2.5"><div class="cap-box"><span class="w">and</span> <span class="w">build</span> <span class="w">a</span> <span class="w hl">real,</span> <span class="w hl">live</span> <span class="w">one.</span></div></div>
+    <div id="cap-12" class="clip cap" data-start="28.3" data-duration="2.5"><div class="cap-box"><span class="w">Click</span> <span class="w">it.</span> <span class="w">Use</span> <span class="w">it.</span> <span class="w hl">Launch</span> <span class="w">it.</span></div></div>
+    <!-- s6 proof -->
+    <div id="cap-13" class="clip cap" data-start="31.25" data-duration="1.75"><div class="cap-box"><span class="w">Fully</span> <span class="w hl">functional.</span></div></div>
+    <div id="cap-14" class="clip cap" data-start="33.1" data-duration="1.7"><div class="cap-box"><span class="w hl">Mobile-ready.</span></div></div>
+    <div id="cap-15" class="clip cap" data-start="34.85" data-duration="1.7"><div class="cap-box"><span class="w hl">Live</span> <span class="w">on</span> <span class="w">the</span> <span class="w">web.</span></div></div>
+    <!-- s7 cta -->
+    <div id="cap-16" class="clip cap" data-start="36.85" data-duration="2"><div class="cap-box"><span class="w">Your</span> <span class="w">new</span> <span class="w">website</span> <span class="w">is</span> <span class="w hl">waiting.</span></div></div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      document.querySelectorAll('[data-composition-id="captions"] .cap').forEach((cap) => {
+        const start = parseFloat(cap.dataset.start);
+        const end = start + parseFloat(cap.dataset.duration);
+        const box = cap.querySelector(".cap-box");
+        const words = cap.querySelectorAll(".w");
+        // Box wipes open from the left at the pace of the words, which blur in one after another.
+        tl.fromTo(box, { clipPath: "inset(0% 100% 0% 0%)" },
+          { clipPath: "inset(0% -4% -12% 0%)", duration: 0.1 + 0.067 * words.length, ease: "power1.out" }, start);
+        tl.fromTo(words, { opacity: 0, filter: "blur(6px)" },
+          { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power2.out" }, start);
+        // Clean exit, then a hard kill so a stale group can never linger.
+        tl.to(box, { opacity: 0, y: 12, filter: "blur(4px)", duration: 0.14, ease: "power3.in" }, end - 0.16);
+        tl.set(box, { opacity: 0 }, end - 0.02);
+      });
+      window.__timelines["captions"] = tl;
+    })();
+  </script>
+</template>

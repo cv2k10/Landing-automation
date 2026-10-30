@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #111111;
+    }
+    #root .shot {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #root .shot img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      object-fit: cover;
+    }
+  </style>
+
+  <div id="root" data-composition-id="s1-hook" data-width="1920" data-height="1080">
+    <div id="s1-shot-1" class="clip shot" data-start="0" data-duration="1.9" data-track-index="0">
+      <img id="s1-img-1" src="assets/broll/shop-owner.jpg" alt="Shop owner serving a customer at the counter" style="object-position: 50% 35%" />
+    </div>
+    <div id="s1-shot-2" class="clip shot" data-start="1.9" data-duration="1.7" data-track-index="1">
+      <img id="s1-img-2" src="assets/broll/pos-smile.jpg" alt="Smiling business owner at a point-of-sale tablet" style="object-position: 50% 30%" />
+    </div>
+    <div id="s1-shot-3" class="clip shot" data-start="3.6" data-duration="1.6" data-track-index="0">
+      <img id="s1-img-3" src="assets/broll/cafe-street.jpg" alt="Café storefront with outdoor tables" style="object-position: 50% 50%" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Shot 1: slow push on the owner.
+      tl.fromTo("#s1-img-1", { scale: 1.0, x: 0 }, { scale: 1.06, x: -20, duration: 1.9, ease: "power1.inOut" }, 0);
+      // Each cut lands slightly large and settles, then keeps drifting.
+      tl.fromTo("#s1-img-2", { scale: 1.1, x: 30 }, { scale: 1.04, x: 0, duration: 0.5, ease: "expo.out" }, 1.9);
+      tl.to("#s1-img-2", { scale: 1.0, x: -24, duration: 1.2, ease: "none" }, 2.4);
+      tl.fromTo("#s1-img-3", { scale: 1.1, y: 20 }, { scale: 1.04, y: 0, duration: 0.5, ease: "expo.out" }, 3.6);
+      tl.to("#s1-img-3", { scale: 1.08, duration: 1.1, ease: "power2.in" }, 4.1);
+      window.__timelines["s1-hook"] = tl;
+    })();
+  </script>
+</template>

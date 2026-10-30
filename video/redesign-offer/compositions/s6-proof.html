@@ -1,0 +1,206 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #111111;
+    }
+    #root .layer {
+      position: absolute;
+      inset: 0;
+    }
+    #s6-bg {
+      overflow: hidden;
+    }
+    #s6-bg img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      object-fit: cover;
+    }
+    #s6-phone {
+      position: absolute;
+      left: 1390px;
+      top: 46px;
+      width: 400px;
+      height: 796px;
+      padding: 16px;
+      border-radius: 58px;
+      background: #111111;
+      box-shadow: 18px 18px 0 var(--color-accent, #ffd23f);
+    }
+    #s6-phone .screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 44px;
+      background: #faf7f0;
+      overflow: hidden;
+      font-family: "Outfit", sans-serif;
+      color: #111111;
+    }
+    #s6-phone .nav {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 100px;
+      padding: 40px 26px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      z-index: 2;
+    }
+    #s6-phone .nav b {
+      font-family: "Archivo Black", sans-serif;
+      font-weight: 400;
+      font-size: 28px;
+    }
+    #s6-phone .burger {
+      width: 34px;
+      height: 22px;
+      border-top: 4px solid #111;
+      border-bottom: 4px solid #111;
+      position: relative;
+    }
+    #s6-phone .burger::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 5px;
+      border-top: 4px solid #111;
+    }
+    #s6-mscroll {
+      position: absolute;
+      left: 0;
+      top: 100px;
+      width: 368px;
+    }
+    #s6-phone .hero {
+      position: relative;
+      height: 380px;
+      overflow: hidden;
+    }
+    #s6-phone .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #s6-phone .hero .scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(17, 17, 17, 0.85) 0%, rgba(17, 17, 17, 0.1) 70%);
+    }
+    #s6-phone .hero h2 {
+      position: absolute;
+      left: 24px;
+      bottom: 110px;
+      width: 320px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 42px;
+      line-height: 1;
+      color: #ffffff;
+    }
+    #s6-phone .hero .btn {
+      position: absolute;
+      left: 24px;
+      bottom: 28px;
+      height: 60px;
+      line-height: 60px;
+      padding: 0 24px;
+      background: var(--color-accent, #ffd23f);
+      font-weight: 700;
+      font-size: 28px;
+    }
+    #s6-phone ul {
+      list-style: none;
+      padding: 18px 24px;
+    }
+    #s6-phone li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 28px;
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 2px solid #e4ded0;
+    }
+    #s6-live {
+      position: absolute;
+      left: 860px;
+      top: 150px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 22px;
+      background: #111111;
+      color: #ffffff;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 32px;
+      line-height: 1;
+      box-shadow: 8px 8px 0 var(--color-accent, #ffd23f);
+    }
+    #s6-live i {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #2ecc71;
+    }
+    #s6-live span {
+      font-family: "Outfit", sans-serif;
+      font-weight: 500;
+    }
+  </style>
+
+  <div id="root" data-composition-id="s6-proof" data-width="1920" data-height="1080">
+    <div id="s6-bg" class="clip layer" data-start="0" data-duration="5.6" data-track-index="0">
+      <img id="s6-bg-img" src="assets/broll/team-build.jpg" alt="Team working on laptops around a table, seen from above" />
+    </div>
+
+    <div id="s6-phone-clip" class="clip layer" data-start="2" data-duration="3.6" data-track-index="1" data-layout-allow-overflow>
+      <div id="s6-phone">
+        <div class="screen">
+          <div class="nav"><b>Corner Café</b><span class="burger"></span></div>
+          <div id="s6-mscroll">
+            <div class="hero">
+              <img src="assets/broll/cafe-interior.jpg" alt="" />
+              <div class="scrim"></div>
+              <h2>Coffee worth the walk.</h2>
+              <span class="btn">Book a table</span>
+            </div>
+            <ul>
+              <li><span>Flat white</span><b>$4.50</b></li>
+              <li><span>Almond croissant</span><b>$3.80</b></li>
+              <li><span>Avocado toast</span><b>$9.00</b></li>
+              <li><span>Iced latte</span><b>$5.00</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s6-live-clip" class="clip layer" data-start="3.85" data-duration="1.75" data-track-index="2" data-layout-allow-overflow>
+      <div id="s6-live"><i></i>LIVE <span>yourbusiness.com</span></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s6-bg-img", { scale: 1.0, y: 0 }, { scale: 1.07, y: -24, duration: 5.6, ease: "none" }, 0);
+
+      // The same new site arrives on a phone and scrolls under the thumb.
+      tl.fromTo("#s6-phone", { x: 620, rotation: 6, filter: "blur(12px)" },
+        { x: 0, rotation: 0, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, 2.0);
+      tl.fromTo("#s6-mscroll", { y: 0 }, { y: -170, duration: 1.4, ease: "power2.inOut" }, 2.9);
+      tl.fromTo("#s6-live", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2)" }, 3.9);
+      window.__timelines["s6-proof"] = tl;
+    })();
+  </script>
+</template>
