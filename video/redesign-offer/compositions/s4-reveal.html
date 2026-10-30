@@ -61,7 +61,7 @@
       <img id="s4-bg-img" src="assets/broll/wireframe.jpg" alt="Hands sketching a website wireframe on paper" />
     </div>
 
-    <div id="s4-badge-clip" class="clip layer" data-start="2.5" data-duration="2.7" data-track-index="1" data-layout-allow-overflow>
+    <div id="s4-badge-clip" class="clip layer" data-start="3.4" data-duration="1.8" data-track-index="1" data-layout-allow-overflow>
       <div id="s4-badge">
         <div id="s4-badge-text">
           <span class="small">100%</span>
@@ -76,9 +76,9 @@
       const tl = gsap.timeline({ paused: true });
       tl.fromTo("#s4-bg-img", { scale: 1.0, x: 0 }, { scale: 1.08, x: -40, duration: 5.2, ease: "power1.inOut" }, 0);
 
-      // The FREE badge slams in on the impact (18.2 s in film time).
+      // The FREE badge slams in on the impact (19.1 s in film time, on the word "free").
       tl.fromTo("#s4-badge", { scale: 0.2, rotation: -40, opacity: 0 },
-        { scale: 1, rotation: -8, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }, 2.6);
+        { scale: 1, rotation: -8, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }, 3.42);
 
       // The badge becomes the world: it grows past the frame into the yellow ground of the next scene.
       tl.to("#s4-badge-text", { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in" }, 4.45);

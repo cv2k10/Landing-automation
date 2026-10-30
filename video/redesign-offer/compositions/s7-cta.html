@@ -90,7 +90,7 @@
       <img id="s7-bg-img" src="assets/broll/high-five.jpg" alt="Two business owners high-fiving over a laptop" />
     </div>
 
-    <div id="s7-card-clip" class="clip layer" data-start="2.3" data-duration="5.1" data-track-index="1">
+    <div id="s7-card-clip" class="clip layer" data-start="2.3" data-duration="6.6" data-track-index="1">
       <div id="s7-card">
         <div class="h" style="top: 210px"><span class="w">Your</span> <span class="w">website,</span></div>
         <div class="h" style="top: 366px"><span class="w">redesigned</span> <span class="w">&amp;</span> <span id="s7-hl">live.</span></div>
@@ -99,7 +99,7 @@
       </div>
     </div>
 
-    <div id="s7-cursor-clip" class="clip" data-start="4.3" data-duration="3.1" data-track-index="2" data-layout-allow-overflow style="position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible">
+    <div id="s7-cursor-clip" class="clip" data-start="4.9" data-duration="4.0" data-track-index="2" data-layout-allow-overflow style="position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible">
       <svg id="s7-cursor" viewBox="0 0 30 42" aria-hidden="true">
         <path d="M2 2 L2 34 L10 26 L16 40 L22 37 L16 24 L27 24 Z" fill="#111111" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round" />
       </svg>
@@ -125,14 +125,14 @@
       tl.fromTo("#s7-btn", { y: 50, opacity: 0, filter: "blur(10px)" },
         { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 3.75);
 
-      // The cursor clicks the call to action (41.8 s in film time).
+      // The cursor clicks the call to action (42.4 s in film time).
       tl.fromTo("#s7-cursor", { x: 1820, y: 1000, transformOrigin: "0% 0%" },
-        { x: 1046, y: 774, duration: 0.8, ease: "power3.inOut" }, 4.3);
-      tl.to("#s7-cursor", { scale: 0.86, duration: 0.07, ease: "power2.in" }, 5.13);
-      tl.to("#s7-btn", { x: 8, y: 8, boxShadow: "4px 4px 0 #ffffff", duration: 0.07, ease: "power2.in" }, 5.13);
-      tl.to("#s7-cursor", { scale: 1, duration: 0.16, ease: "power2.out" }, 5.2);
-      tl.to("#s7-btn", { x: 0, y: 0, boxShadow: "12px 12px 0 #ffffff", duration: 0.22, ease: "power2.out" }, 5.2);
-      tl.to("#s7-cursor", { x: 1180, y: 900, duration: 0.6, ease: "power2.inOut" }, 5.6);
+        { x: 1046, y: 774, duration: 0.8, ease: "power3.inOut" }, 4.9);
+      tl.to("#s7-cursor", { scale: 0.86, duration: 0.07, ease: "power2.in" }, 5.73);
+      tl.to("#s7-btn", { x: 8, y: 8, boxShadow: "4px 4px 0 #ffffff", duration: 0.07, ease: "power2.in" }, 5.73);
+      tl.to("#s7-cursor", { scale: 1, duration: 0.16, ease: "power2.out" }, 5.8);
+      tl.to("#s7-btn", { x: 0, y: 0, boxShadow: "12px 12px 0 #ffffff", duration: 0.22, ease: "power2.out" }, 5.8);
+      tl.to("#s7-cursor", { x: 1180, y: 900, duration: 0.6, ease: "power2.inOut" }, 6.2);
       window.__timelines["s7-cta"] = tl;
     })();
   </script>

@@ -516,7 +516,7 @@
       tl.fromTo("#s5-card", { scale: 1.18, opacity: 0, filter: "blur(14px)" },
         { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, 0.12);
       tl.fromTo("#s5-file", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0.55);
-      tl.fromTo("#s5-strike-path", { attr: { "stroke-dashoffset": 110 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.32, ease: "power3.out" }, 1.25);
+      tl.fromTo("#s5-strike-path", { attr: { "stroke-dashoffset": 110 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.32, ease: "power3.out" }, 1.8);
 
       // --- Morph: the card widens into a real browser window.
       tl.to(["#s5-file", "#s5-strike"], { opacity: 0, duration: 0.15, ease: "power2.in" }, 2.3);
@@ -529,7 +529,7 @@
       tl.fromTo("#s5-new", { clipPath: "inset(0% 100% 0% 0%)" },
         { clipPath: "inset(0% 0% 0% 0%)", duration: 0.8, ease: "power2.inOut" }, 4.9);
       tl.fromTo("#s5-scan", { x: 0 }, { x: 1544, duration: 0.8, ease: "power2.inOut" }, 4.9);
-      tl.fromTo("#s5-live", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 5.8);
+      tl.fromTo("#s5-live", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 6.15);
 
       // --- It works: click Menu, the page scrolls; click Book, it books.
       tl.fromTo("#s5-cursor", { x: 1780, y: 980, transformOrigin: "0% 0%" },
@@ -539,15 +539,15 @@
       tl.to("#s5-cursor", { scale: 1, duration: 0.14, ease: "power2.out" }, 7.3);
       tl.to("#s5-scroll", { y: -586, duration: 0.6, ease: "power2.inOut" }, 7.36);
 
-      tl.to("#s5-cursor", { x: 1590, y: 694, duration: 0.55, ease: "power3.inOut" }, 8.1);
-      tl.to("#s5-cursor", { scale: 0.86, duration: 0.07, ease: "power2.in" }, 8.73);
-      tl.to("#s5-book", { scale: 0.96, backgroundColor: "#111111", duration: 0.08, ease: "power2.in" }, 8.78);
-      tl.to("#s5-book-label", { opacity: 0, duration: 0.08 }, 8.8);
-      tl.to("#s5-book-done", { opacity: 1, duration: 0.1 }, 8.84);
-      tl.to("#s5-book", { scale: 1, duration: 0.2, ease: "power2.out" }, 8.88);
-      tl.to("#s5-cursor", { scale: 1, duration: 0.14, ease: "power2.out" }, 8.8);
+      tl.to("#s5-cursor", { x: 1590, y: 694, duration: 0.4, ease: "power3.inOut" }, 7.98);
+      tl.to("#s5-cursor", { scale: 0.86, duration: 0.07, ease: "power2.in" }, 8.43);
+      tl.to("#s5-book", { scale: 0.96, backgroundColor: "#111111", duration: 0.08, ease: "power2.in" }, 8.48);
+      tl.to("#s5-book-label", { opacity: 0, duration: 0.08 }, 8.5);
+      tl.to("#s5-book-done", { opacity: 1, duration: 0.1 }, 8.54);
+      tl.to("#s5-book", { scale: 1, duration: 0.2, ease: "power2.out" }, 8.58);
+      tl.to("#s5-cursor", { scale: 1, duration: 0.14, ease: "power2.out" }, 8.5);
       tl.fromTo("#s5-toast", { x: 80, opacity: 0, filter: "blur(8px)" },
-        { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 8.95);
+        { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 8.65);
 
       // --- Zoom through into the next scene.
       tl.to("#s5-cursor", { opacity: 0, duration: 0.12 }, 9.85);

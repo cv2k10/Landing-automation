@@ -74,7 +74,7 @@
       <img id="s3-bg-img" src="assets/broll/phone-apps.jpg" alt="Smartphone on a table showing its home screen" />
     </div>
 
-    <div id="s3-tab-clip" class="clip layer" data-start="0.4" data-duration="2.9" data-track-index="1" data-layout-allow-overflow>
+    <div id="s3-tab-clip" class="clip layer" data-start="0.4" data-duration="3.1" data-track-index="1" data-layout-allow-overflow>
       <div id="s3-tab">
         <div class="fav"></div>
         <div class="title">yourbusiness.com</div>
@@ -82,7 +82,7 @@
       </div>
     </div>
 
-    <div id="s3-cursor-clip" class="clip layer" data-start="1.2" data-duration="2.6" data-track-index="2" data-layout-allow-overflow>
+    <div id="s3-cursor-clip" class="clip layer" data-start="1.6" data-duration="2.3" data-track-index="2" data-layout-allow-overflow>
       <svg id="s3-cursor" viewBox="0 0 30 42" aria-hidden="true">
         <path d="M2 2 L2 34 L10 26 L16 40 L22 37 L16 24 L27 24 Z" fill="#111111" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round" />
       </svg>
@@ -98,13 +98,13 @@
       tl.fromTo("#s3-tab", { y: -60, opacity: 0, filter: "blur(10px)" },
         { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 0.4);
       // ...the visitor's cursor goes straight for the close button (× sits at ~1306, 210).
-      tl.fromTo("#s3-cursor", { x: 1720, y: 900, transformOrigin: "0% 0%" }, { x: 1300, y: 204, duration: 0.8, ease: "power3.inOut" }, 1.2);
-      tl.to("#s3-cursor", { scale: 0.86, duration: 0.08, ease: "power2.in" }, 2.22);
-      tl.to("#s3-x", { backgroundColor: "#e5322d", color: "#ffffff", duration: 0.06 }, 2.28);
-      tl.to("#s3-cursor", { scale: 1, duration: 0.14, ease: "power2.out" }, 2.3);
+      tl.fromTo("#s3-cursor", { x: 1720, y: 900, transformOrigin: "0% 0%" }, { x: 1300, y: 204, duration: 0.8, ease: "power3.inOut" }, 1.65);
+      tl.to("#s3-cursor", { scale: 0.86, duration: 0.08, ease: "power2.in" }, 2.67);
+      tl.to("#s3-x", { backgroundColor: "#e5322d", color: "#ffffff", duration: 0.06 }, 2.73);
+      tl.to("#s3-cursor", { scale: 1, duration: 0.14, ease: "power2.out" }, 2.75);
       // Click: the tab is gone.
-      tl.to("#s3-tab", { scaleX: 0, opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 2.32);
-      tl.to("#s3-cursor", { x: 1800, y: 640, opacity: 0, duration: 0.5, ease: "power3.in" }, 2.9);
+      tl.to("#s3-tab", { scaleX: 0, opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 2.77);
+      tl.to("#s3-cursor", { x: 1800, y: 640, opacity: 0, duration: 0.45, ease: "power3.in" }, 3.3);
       window.__timelines["s3-seconds"] = tl;
     })();
   </script>

@@ -214,9 +214,9 @@
       </div>
     </div>
 
-    <div id="s2-stamp-1-clip" class="clip layer" data-start="1.9" data-duration="4.5" data-track-index="2"><div id="s2-stamp-1" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap style="left: 230px; top: 150px">Outdated</div></div>
-    <div id="s2-stamp-2-clip" class="clip layer" data-start="2.5" data-duration="3.9" data-track-index="3"><div id="s2-stamp-2" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap style="left: 1440px; top: 360px">Slow</div></div>
-    <div id="s2-stamp-3-clip" class="clip layer" data-start="3.1" data-duration="3.3" data-track-index="4"><div id="s2-stamp-3" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap style="left: 250px; top: 640px">Not mobile-friendly</div></div>
+    <div id="s2-stamp-1-clip" class="clip layer" data-start="2.35" data-duration="4.05" data-track-index="2"><div id="s2-stamp-1" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap style="left: 230px; top: 150px">Outdated</div></div>
+    <div id="s2-stamp-2-clip" class="clip layer" data-start="3.3" data-duration="3.1" data-track-index="3"><div id="s2-stamp-2" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap style="left: 1440px; top: 360px">Slow</div></div>
+    <div id="s2-stamp-3-clip" class="clip layer" data-start="4.05" data-duration="2.35" data-track-index="4"><div id="s2-stamp-3" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap style="left: 250px; top: 640px">Not mobile-friendly</div></div>
   </div>
 
   <script>
@@ -232,7 +232,7 @@
       tl.fromTo("#s2-bar", { scaleX: 0.03 }, { scaleX: 0.14, duration: 5.2, ease: "power1.out" }, 0.9);
 
       // Stamps slam on.
-      [["#s2-stamp-1", 1.9, -7], ["#s2-stamp-2", 2.5, 6], ["#s2-stamp-3", 3.1, -4]].forEach(([sel, t, rot]) => {
+      [["#s2-stamp-1", 2.35, -7], ["#s2-stamp-2", 3.3, 6], ["#s2-stamp-3", 4.05, -4]].forEach(([sel, t, rot]) => {
         tl.fromTo(sel, { scale: 1.6, rotation: rot * 2, opacity: 0 },
           { scale: 1, rotation: rot, opacity: 1, duration: 0.22, ease: "power4.out" }, t);
       });

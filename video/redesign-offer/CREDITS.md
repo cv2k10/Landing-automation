@@ -21,6 +21,11 @@
 `assets/sfx/*.mp3` come from the HyperFrames bundled SFX set (sourced from Pixabay, free for
 commercial use, no attribution required).
 
+## Voiceover
+
+`assets/vo/*.wav` were synthesised locally with Kokoro-82M (Apache-2.0), voice `am_michael`,
+via `npx hyperframes tts`.
+
 ## Sample business
 
 "Corner Café" and `yourbusiness.com` are a fictional example used to demonstrate a redesign.

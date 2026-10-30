@@ -3,7 +3,8 @@
 GOAL:    A business owner with a dated website feels the cost of it, learns we rebuild it as a
          real, working, live site (not a picture of one) — fast and free — and replies to claim it.
 OUTPUT:  HyperFrames, 1920 x 1080, 30 fps
-TIME:    44.0 s x 30 = 1320 frames. No music bed (no music source available); SFX on visible actions.
+TIME:    45.5 s x 30 = 1365 frames. American male voiceover (Kokoro am_michael) is the clock;
+         captions follow it. No music bed (no music source available); SFX on visible actions.
 LOOK:    Medium = real photographs (Unsplash b-roll) + printed "sticker" captions.
          Ink #111111, paper #FFFFFF, signal yellow #FFD23F (the accent: one highlighted word per
          caption, the FREE badge, the drawn-scene ground), alert red #E5322D (only the
