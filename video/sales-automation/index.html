@@ -40,7 +40,7 @@
       #glow1 { width: 700px; height: 700px; left: -200px; top: 200px; background: rgba(34,197,94,0.22); }
       #glow2 { width: 800px; height: 800px; right: -300px; bottom: 300px; background: rgba(56,189,248,0.2); }
 
-      #steps { position: absolute; top: 70px; left: 60px; right: 60px; z-index: 20;
+      #steps { position: absolute; top: 70px; left: 50px; right: 230px; z-index: 20;
         display: flex; gap: 12px; }
       .step { flex: 1; text-align: center; }
       .step .bar { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
@@ -55,6 +55,11 @@
       #ticker-strip { white-space: nowrap; font: 800 40px var(--font-display);
         letter-spacing: 0.02em; text-transform: uppercase; }
       #ticker-strip b { color: #0a0f1f; margin: 0 28px; }
+
+      #logo { position: absolute; z-index: 25; top: 44px; right: 46px; width: 160px; height: 112px;
+        border-radius: 24px; background: rgba(255,255,255,0.95); padding: 12px 16px;
+        box-shadow: 0 10px 40px rgba(0,0,0,.45), 0 0 0 2px rgba(56,189,248,.5); }
+      #logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
       /* ---------- scenes ---------- */
       .clip { position: absolute; inset: 0; z-index: 10; }
@@ -203,13 +208,22 @@
       <div id="glow2"></div>
 
       <!-- progress steps (persistent) -->
-      <div id="steps" class="clip" data-start="0" data-duration="58" data-track-index="1" style="inset:auto;top:70px;left:60px;right:60px;">
+      <div id="steps" class="clip" data-start="0" data-duration="58" data-track-index="1" style="inset:auto;top:70px;left:50px;right:230px;">
         <div class="step" id="st1"><div class="bar"><i></i></div><span>Attract</span></div>
         <div class="step" id="st2"><div class="bar"><i></i></div><span>Capture</span></div>
         <div class="step" id="st3"><div class="bar"><i></i></div><span>Track</span></div>
         <div class="step" id="st4"><div class="bar"><i></i></div><span>Follow up</span></div>
         <div class="step" id="st5"><div class="bar"><i></i></div><span>Convert</span></div>
       </div>
+
+      <!-- brand logo (persistent, top-right) -->
+      <div id="logo" class="clip" data-start="0" data-duration="58" data-track-index="3" style="inset:auto;top:44px;right:46px;">
+        <img src="assets/logo.png" alt="DW logo" />
+      </div>
+
+      <!-- background music -->
+      <audio id="bgm" src="assets/music.mp3" data-start="0" data-duration="58" data-track-index="4"
+        data-volume="0.7" data-fade-in="0.5" data-fade-out="2.5"></audio>
 
       <!-- running ticker (persistent) -->
       <div id="ticker" class="clip" data-start="0" data-duration="58" data-track-index="2" style="inset:auto;left:0;right:0;bottom:0;">
@@ -420,6 +434,9 @@
       tl.to("#glow2", { x: -250, y: -400, duration: 58, ease: "sine.inOut" }, 0);
       tl.fromTo("#ticker-strip", { x: 0 }, { x: -3600, duration: 58, ease: "none" }, 0);
       
+
+      tl.fromTo("#logo", { scale: 0.85 }, { scale: 1, duration: 0.6, ease: "back.out(2)" }, 0);
+      tl.to("#logo", { scale: 1.08, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 54.6);
 
       // ---- S1 0-5
       tl.fromTo("#s1 .word", { scale: 1.08 }, { scale: 1, duration: 0.6, stagger: 0.05, ease: "power2.out" }, 0);
