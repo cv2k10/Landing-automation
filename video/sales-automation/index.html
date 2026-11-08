@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0a0f1f;
+        --panel: #131a30;
+        --panel-2: #1b2442;
+        --line: #2a3560;
+        --ink: #ffffff;
+        --muted: #9aa6c8;
+        --green: #22c55e;
+        --cyan: #38bdf8;
+        --amber: #fbbf24;
+        --pink: #f472b6;
+        --violet: #a78bfa;
+        --red: #f87171;
+        --font-display: "Inter", sans-serif;
+        --font-body: "Inter", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--ground); color: var(--ink);
+        font-family: var(--font-body);
+      }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+
+      /* ---------- persistent chrome ---------- */
+      #bg { position: absolute; inset: -200px; z-index: 0;
+        background-image:
+          linear-gradient(rgba(56,189,248,0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(56,189,248,0.07) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glow1, #glow2 { position: absolute; border-radius: 50%; filter: blur(120px); z-index: 0; }
+      #glow1 { width: 700px; height: 700px; left: -200px; top: 200px; background: rgba(34,197,94,0.22); }
+      #glow2 { width: 800px; height: 800px; right: -300px; bottom: 300px; background: rgba(56,189,248,0.2); }
+
+      #steps { position: absolute; top: 70px; left: 50px; right: 230px; z-index: 20;
+        display: flex; gap: 12px; }
+      .step { flex: 1; text-align: center; }
+      .step .bar { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+      .step .bar i { display: block; height: 100%; width: 100%; background: var(--green);
+        transform-origin: left center; transform: scaleX(0); }
+      .step span { display: block; margin-top: 12px; font: 600 28px var(--font-body);
+        color: var(--muted); letter-spacing: 0.02em; }
+
+      #ticker { position: absolute; left: 0; right: 0; bottom: 0; height: 110px; z-index: 20;
+        background: var(--green); color: #052e16; overflow: hidden;
+        display: flex; align-items: center; }
+      #ticker-strip { white-space: nowrap; font: 800 40px var(--font-display);
+        letter-spacing: 0.02em; text-transform: uppercase; }
+      #ticker-strip b { color: #0a0f1f; margin: 0 28px; }
+
+      #logo { position: absolute; z-index: 25; top: 44px; right: 46px; width: 160px; height: 112px;
+        background: transparent; }
+      #logo img { width: 100%; height: 100%; object-fit: contain; display: block;
+        filter: drop-shadow(0 0 10px rgba(125,211,252,.55)) drop-shadow(0 6px 14px rgba(0,0,0,.6)); }
+
+      /* ---------- scenes ---------- */
+      .clip { position: absolute; inset: 0; z-index: 10; }
+      .scene { padding: 210px 70px 160px; display: flex; flex-direction: column; align-items: center; }
+      .kicker { font: 700 30px var(--font-mono); color: var(--green); letter-spacing: 0.12em;
+        text-transform: uppercase; margin-bottom: 26px; }
+      .headline { font: 800 92px/1.02 var(--font-display); letter-spacing: -0.035em;
+        text-align: center; }
+      .headline .hl { color: var(--green); }
+      .headline .hc { color: var(--cyan); }
+      .sub { margin-top: 28px; font: 500 38px/1.35 var(--font-body); color: var(--muted);
+        text-align: center; max-width: 900px; }
+      .word { display: inline-block; }
+      .card { background: var(--panel); border: 2px solid var(--line); border-radius: 32px; }
+
+      /* S1 hook */
+      #browser { width: 860px; height: 560px; margin-top: 80px; position: relative; overflow: hidden; }
+      #browser .top { height: 70px; background: var(--panel-2); display: flex; align-items: center;
+        gap: 14px; padding: 0 28px; border-bottom: 2px solid var(--line); }
+      #browser .top i { width: 20px; height: 20px; border-radius: 50%; background: var(--line); }
+      #browser .url { margin-left: 18px; flex: 1; height: 38px; border-radius: 19px; background: var(--ground);
+        font: 500 26px/38px var(--font-mono); color: var(--muted); padding-left: 22px; }
+      #browser .hero-l { position: absolute; left: 50px; top: 120px; width: 420px; }
+      #browser .ln { height: 30px; border-radius: 8px; background: var(--line); margin-bottom: 18px; }
+      #browser .cta { width: 240px; height: 70px; border-radius: 16px; background: var(--green);
+        margin-top: 34px; font: 800 28px/70px var(--font-display); color: #052e16; text-align: center; }
+      #browser .hero-r { position: absolute; right: 50px; top: 120px; width: 300px; height: 300px;
+        border-radius: 24px; background: linear-gradient(135deg, rgba(56,189,248,.35), rgba(34,197,94,.35)); }
+      #badge247 { position: absolute; right: 70px; top: 1180px; padding: 22px 34px; border-radius: 24px;
+        background: var(--amber); color: #3b2300; font: 800 44px var(--font-display);
+        transform: rotate(-6deg); box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+      #cursor { position: absolute; left: 0; top: 0; width: 56px; height: 56px; z-index: 30; }
+
+      /* S2 problem */
+      #leak { margin-top: 70px; position: relative; width: 940px; height: 820px; }
+      .vis { position: absolute; width: 34px; height: 34px; border-radius: 50%; background: var(--cyan); }
+      #site-box { position: absolute; left: 270px; top: 260px; width: 400px; height: 280px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      #site-box b { font: 800 46px var(--font-display); }
+      #site-box small { font: 500 28px var(--font-body); color: var(--muted); margin-top: 8px; }
+      .xtag { position: absolute; padding: 16px 26px; border-radius: 18px; background: rgba(248,113,113,.15);
+        border: 2px solid var(--red); color: var(--red); font: 700 30px var(--font-body); white-space: nowrap; }
+
+      /* S3 funnel */
+      #funnel { margin-top: 60px; position: relative; width: 940px; height: 960px; }
+      .tier { position: absolute; left: 50%; height: 170px; transform: translateX(-50%);
+        display: flex; align-items: center; justify-content: center; flex-direction: column;
+        clip-path: polygon(0 0, 100% 0, calc(100% - 50px) 100%, 50px 100%); }
+      .tier b { font: 800 44px var(--font-display); color: #06101f; }
+      .tier small { font: 600 26px var(--font-body); color: rgba(6,16,31,.75); margin-top: 4px; }
+      .drop { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: #fff;
+        left: 457px; top: -40px; box-shadow: 0 0 20px rgba(255,255,255,.7); }
+
+      /* S4 form */
+      #form { width: 720px; margin-top: 50px; padding: 44px; position: relative; }
+      #form h3 { font: 800 42px var(--font-display); margin-bottom: 26px; }
+      .field { height: 84px; border-radius: 18px; background: var(--ground); border: 2px solid var(--line);
+        margin-bottom: 20px; padding: 0 26px; display: flex; align-items: center; position: relative; }
+      .field label { position: absolute; top: -14px; left: 20px; padding: 0 8px; background: var(--panel);
+        font: 600 26px var(--font-body); color: var(--muted); }
+      .field .typed { font: 500 32px var(--font-mono); color: var(--ink); white-space: nowrap;
+        clip-path: inset(0 100% 0 0); }
+      #submit { height: 90px; border-radius: 18px; background: var(--green); color: #052e16;
+        font: 800 36px/90px var(--font-display); text-align: center; margin-top: 10px; }
+      #hub-wrap { position: relative; width: 940px; height: 620px; margin-top: 10px; }
+      #hub { position: absolute; left: 345px; top: 40px; width: 250px; height: 120px; border-radius: 28px;
+        background: linear-gradient(135deg, var(--green), var(--cyan)); color: #06101f;
+        display: flex; align-items: center; justify-content: center; font: 800 34px var(--font-display);
+        box-shadow: 0 0 60px rgba(34,197,94,.45); }
+      .dest { position: absolute; width: 210px; padding: 22px 10px; text-align: center; top: 400px; }
+      .dest svg { width: 64px; height: 64px; }
+      .dest b { display: block; font: 700 28px var(--font-body); margin-top: 10px; }
+      .dest small { display: block; font: 500 26px var(--font-body); color: var(--muted); margin-top: 4px; }
+      #wires { position: absolute; left: 0; top: 0; width: 940px; height: 620px; }
+      #instant { position: absolute; left: 50%; top: 260px; transform: translateX(-50%);
+        font: 700 28px var(--font-mono); color: var(--amber); background: var(--ground);
+        padding: 8px 20px; border-radius: 12px; border: 2px solid var(--amber); white-space: nowrap; }
+
+      /* S5 tracking */
+      #dash { width: 940px; margin-top: 50px; padding: 36px; }
+      .kpis { display: flex; gap: 20px; }
+      .kpi { flex: 1; background: var(--ground); border-radius: 22px; padding: 24px; border: 2px solid var(--line); }
+      .kpi small { font: 600 28px var(--font-body); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+      .kpi b { display: block; font: 800 64px var(--font-display); margin-top: 6px; }
+      #chart { height: 300px; margin-top: 28px; display: flex; align-items: flex-end; gap: 18px;
+        padding: 0 10px; border-bottom: 2px solid var(--line); position: relative; }
+      #chart .bar { flex: 1; border-radius: 12px 12px 0 0; background: linear-gradient(180deg, var(--green), rgba(34,197,94,.25));
+        transform-origin: bottom center; }
+      #chart-lbl { display: flex; gap: 18px; padding: 10px 10px 0; }
+      #chart-lbl span { flex: 1; text-align: center; font: 500 28px var(--font-mono); color: var(--muted); }
+      #pipe { width: 940px; margin-top: 30px; display: flex; gap: 14px; position: relative; height: 290px; }
+      .stage { flex: 1; background: var(--panel); border: 2px solid var(--line); border-radius: 22px; padding: 18px 12px;
+        text-align: center; font: 700 26px var(--font-body); color: var(--muted); }
+      #lead { position: absolute; top: 80px; left: 12px; width: 206px; height: 180px; border-radius: 18px;
+        background: var(--panel-2); border: 2px solid var(--cyan); padding: 16px; }
+      #lead b { font: 700 26px var(--font-body); display: block; }
+      #lead small { font: 500 24px var(--font-mono); color: var(--cyan); display: block; margin-top: 6px; }
+      #lead .tag { margin-top: 12px; display: inline-block; padding: 4px 12px; border-radius: 10px; font: 700 24px var(--font-mono);
+        background: rgba(251,191,36,.18); color: var(--amber); }
+      .src { position: absolute; padding: 12px 22px; border-radius: 40px; font: 700 26px var(--font-mono);
+        background: var(--panel-2); border: 2px solid var(--line); white-space: nowrap; }
+
+      /* S6 follow-up */
+      #tl { position: relative; width: 940px; height: 1060px; margin-top: 50px; }
+      #tl-line { position: absolute; left: 70px; top: 30px; width: 8px; height: 860px; border-radius: 4px;
+        background: var(--green); transform-origin: top center; }
+      #tl-line-bg { position: absolute; left: 70px; top: 30px; width: 8px; height: 860px; border-radius: 4px; background: var(--line); }
+      .tnode { position: absolute; left: 44px; width: 60px; height: 60px; border-radius: 50%;
+        background: var(--green); color: #052e16; font: 800 28px/60px var(--font-display); text-align: center;
+        box-shadow: 0 0 0 10px var(--ground); }
+      .tmsg { position: absolute; left: 150px; width: 760px; padding: 26px 30px; display: flex; gap: 24px; align-items: center; }
+      .tmsg svg { width: 64px; height: 64px; flex: none; }
+      .tmsg .day { font: 700 28px var(--font-mono); color: var(--green); letter-spacing: .08em; }
+      .tmsg b { display: block; font: 700 34px var(--font-body); margin-top: 4px; }
+      .tmsg small { display: block; font: 500 26px var(--font-body); color: var(--muted); margin-top: 4px; }
+      #reply { position: absolute; right: 30px; top: 940px; padding: 24px 34px; border-radius: 30px 30px 6px 30px;
+        background: var(--green); color: #052e16; font: 800 36px var(--font-display); }
+
+      /* S7 loop */
+      #loop { position: relative; width: 900px; height: 900px; margin-top: 50px; }
+      #ring { position: absolute; left: 0; top: 0; width: 900px; height: 900px; }
+      #core { position: absolute; left: 270px; top: 270px; width: 360px; height: 360px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(34,197,94,.35), rgba(34,197,94,.05) 70%);
+        border: 3px solid var(--green); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      #core b { font: 800 120px/1 var(--font-display); color: var(--green); }
+      #core small { font: 700 32px var(--font-body); margin-top: 10px; }
+      .lnode { position: absolute; width: 200px; height: 200px; margin: -100px 0 0 -100px; border-radius: 50%;
+        background: var(--panel); border: 3px solid var(--line); display: flex; flex-direction: column;
+        align-items: center; justify-content: center; }
+      .lnode svg { width: 60px; height: 60px; }
+      .lnode b { font: 700 28px var(--font-body); margin-top: 8px; }
+
+      /* S8 CTA */
+      #s8 { justify-content: center; }
+      #cta-btn { margin-top: 70px; padding: 34px 64px; border-radius: 26px; background: var(--green);
+        color: #052e16; font: 800 46px var(--font-display); box-shadow: 0 0 80px rgba(34,197,94,.5); }
+      .chk { display: flex; gap: 40px; margin-top: 70px; flex-wrap: wrap; justify-content: center; }
+      .chk span { font: 700 32px var(--font-body); color: var(--ink); }
+      .chk span::before { content: "✓ "; color: var(--green); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="58" data-width="1080" data-height="1920">
+      <div id="bg"></div>
+      <div id="glow1"></div>
+      <div id="glow2"></div>
+
+      <!-- progress steps (persistent) -->
+      <div id="steps" class="clip" data-start="0" data-duration="58" data-track-index="1" style="inset:auto;top:70px;left:50px;right:230px;">
+        <div class="step" id="st1"><div class="bar"><i></i></div><span>Attract</span></div>
+        <div class="step" id="st2"><div class="bar"><i></i></div><span>Capture</span></div>
+        <div class="step" id="st3"><div class="bar"><i></i></div><span>Track</span></div>
+        <div class="step" id="st4"><div class="bar"><i></i></div><span>Follow up</span></div>
+        <div class="step" id="st5"><div class="bar"><i></i></div><span>Convert</span></div>
+      </div>
+
+      <!-- brand logo (persistent, top-right) -->
+      <div id="logo" class="clip" data-start="0" data-duration="58" data-track-index="3" style="inset:auto;top:44px;right:46px;">
+        <img src="assets/logo.png" alt="DW logo" />
+      </div>
+
+      <!-- background music -->
+      <audio id="bgm" src="assets/music.mp3" data-start="0" data-duration="58" data-track-index="4"
+        data-volume="0.7" data-fade-in="0.5" data-fade-out="2.5"></audio>
+
+      <!-- running ticker (persistent) -->
+      <div id="ticker" class="clip" data-start="0" data-duration="58" data-track-index="2" style="inset:auto;left:0;right:0;bottom:0;">
+        <div id="ticker-strip">
+          Lead capture <b>●</b> Smart funnels <b>●</b> Instant form alerts <b>●</b> CRM sync <b>●</b> Conversion tracking <b>●</b> Auto follow-up <b>●</b> More sales <b>●</b> 24/7 selling <b>●</b>
+          Lead capture <b>●</b> Smart funnels <b>●</b> Instant form alerts <b>●</b> CRM sync <b>●</b> Conversion tracking <b>●</b> Auto follow-up <b>●</b> More sales <b>●</b> 24/7 selling <b>●</b>
+          Lead capture <b>●</b> Smart funnels <b>●</b> Instant form alerts <b>●</b> CRM sync <b>●</b> Conversion tracking <b>●</b> Auto follow-up <b>●</b> More sales <b>●</b> 24/7 selling <b>●</b>
+        </div>
+      </div>
+
+      <!-- ===== S1 HOOK 0-5 ===== -->
+      <section id="s1" class="clip scene" data-start="0" data-duration="5" data-track-index="0">
+        <div class="kicker s1-k">For business owners</div>
+        <h1 class="headline"><span class="word">Your</span> <span class="word">website</span> <span class="word">should</span><br /><span class="word">be</span> <span class="word">your</span> <span class="word hl">best</span><br /><span class="word hl">salesperson</span></h1>
+        <div id="browser" class="card">
+          <div class="top"><i></i><i></i><i></i><div class="url">yourbusiness.com</div></div>
+          <div class="hero-l"><div class="ln" style="width:100%;height:44px"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:65%"></div><div class="cta" id="b-cta">Get a quote</div></div>
+          <div class="hero-r"></div>
+        </div>
+        <div id="badge247">Sells 24/7</div>
+        <svg id="cursor" viewBox="0 0 24 24"><path d="M3 2l7 19 2.5-7.5L20 11z" fill="#fff" stroke="#0a0f1f" stroke-width="1.5" /></svg>
+      </section>
+
+      <!-- ===== S2 PROBLEM 5-11 ===== -->
+      <section id="s2" class="clip scene" data-start="5" data-duration="6" data-track-index="0">
+        <div class="kicker" style="color:var(--red)">The problem</div>
+        <h1 class="headline"><span class="word">Most</span> <span class="word">sites</span> <span class="word">are</span><br /><span class="word" style="color:var(--red)">leaky</span> <span class="word" style="color:var(--red)">buckets</span></h1>
+        <div id="leak">
+          <div id="site-box" class="card"><b>Basic website</b><small>no capture · no tracking</small></div>
+          <div class="vis v2" style="left:0;top:380px"></div>
+          <div class="vis v2" style="left:-60px;top:330px"></div>
+          <div class="vis v2" style="left:-120px;top:430px"></div>
+          <div class="vis v2" style="left:-180px;top:360px"></div>
+          <div class="vis v2" style="left:-240px;top:410px"></div>
+          <div class="vis v2" style="left:-300px;top:340px"></div>
+          <div class="xtag" id="x1" style="left:20px;top:620px">✕ Visitors leave</div>
+          <div class="xtag" id="x2" style="left:470px;top:620px">✕ No contact info</div>
+          <div class="xtag" id="x3" style="left:180px;top:730px">✕ No follow-up = lost sales</div>
+        </div>
+      </section>
+
+      <!-- ===== S3 FUNNEL 11-20 ===== -->
+      <section id="s3" class="clip scene" data-start="11" data-duration="9" data-track-index="0">
+        <div class="kicker">Method 01 · The funnel</div>
+        <h1 class="headline"><span class="word">Guide</span> <span class="word">every</span> <span class="word">visitor</span><br /><span class="word">to</span> <span class="word hl">one</span> <span class="word hl">action</span></h1>
+        <div id="funnel">
+          <div class="tier" id="t1" style="top:60px;width:940px;background:var(--cyan)"><b>Traffic</b><small>Ads · Google · Social</small></div>
+          <div class="tier" id="t2" style="top:250px;width:840px;background:var(--violet)"><b>Landing page</b><small>One clear offer</small></div>
+          <div class="tier" id="t3" style="top:440px;width:740px;background:var(--amber)"><b>Lead form</b><small>Name · Email · Phone</small></div>
+          <div class="tier" id="t4" style="top:630px;width:640px;background:var(--green)"><b>Customer</b><small>Sale closed</small></div>
+          <div class="drop d3" style="left:300px"></div>
+          <div class="drop d3" style="left:620px"></div>
+          <div class="drop d3" style="left:457px"></div>
+          <div class="drop d3" style="left:380px"></div>
+          <div class="drop d3" style="left:540px"></div>
+          <div class="sub" id="f-sub" style="position:absolute;top:850px;left:20px;right:20px;margin:0 auto">Fewer choices. Clear message. <b style="color:#fff">More conversions.</b></div>
+        </div>
+      </section>
+
+      <!-- ===== S4 FORM AUTOMATION 20-29 ===== -->
+      <section id="s4" class="clip scene" data-start="20" data-duration="9" data-track-index="0">
+        <div class="kicker">Method 02 · Form automation</div>
+        <h1 class="headline" style="font-size:82px"><span class="word">One</span> <span class="word">submit.</span><br /><span class="word hl">Everything</span> <span class="word hl">happens.</span></h1>
+        <div id="form" class="card">
+          <h3>Get your free quote</h3>
+          <div class="field"><label>Name</label><span class="typed" id="ty1">Sarah Lee</span></div>
+          <div class="field"><label>Email</label><span class="typed" id="ty2">sarah@email.com</span></div>
+          <div class="field"><label>Phone</label><span class="typed" id="ty3">+1 555 0142</span></div>
+          <div id="submit">Submit ➜</div>
+        </div>
+        <div id="hub-wrap">
+          <svg id="wires" viewBox="0 0 940 620">
+            <g fill="none" stroke-width="5" stroke-linecap="round">
+              <path class="wire" d="M470 160 C470 280 105 280 105 400" stroke="#38bdf8" />
+              <path class="wire" d="M470 160 C470 280 345 280 345 400" stroke="#a78bfa" />
+              <path class="wire" d="M470 160 C470 280 595 280 595 400" stroke="#fbbf24" />
+              <path class="wire" d="M470 160 C470 280 835 280 835 400" stroke="#f472b6" />
+            </g>
+          </svg>
+          <div id="hub">⚡ Automation</div>
+          <div id="instant">in 0.3 seconds</div>
+          <div class="dest card" style="left:0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+            <b>CRM</b><small>Lead saved</small></div>
+          <div class="dest card" style="left:240px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+            <b>Email</b><small>Auto-reply</small></div>
+          <div class="dest card" style="left:490px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>
+            <b>WhatsApp</b><small>Hi Sarah! 👋</small></div>
+          <div class="dest card" style="left:730px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            <b>Team alert</b><small>Call now</small></div>
+        </div>
+      </section>
+
+      <!-- ===== S5 TRACKING 29-38 ===== -->
+      <section id="s5" class="clip scene" data-start="29" data-duration="9" data-track-index="0">
+        <div class="kicker">Method 03 · Backend tracking</div>
+        <h1 class="headline" style="font-size:84px"><span class="word">Know</span> <span class="word">where</span> <span class="word">every</span><br /><span class="word hc">lead</span> <span class="word hc">comes</span> <span class="word hc">from</span></h1>
+        <div id="dash" class="card">
+          <div class="kpis">
+            <div class="kpi"><small>Visitors</small><b id="k1">0</b></div>
+            <div class="kpi"><small>Leads</small><b id="k2" style="color:var(--cyan)">0</b></div>
+            <div class="kpi"><small>Sales</small><b id="k3" style="color:var(--green)">0</b></div>
+          </div>
+          <div id="chart">
+            <div class="bar" style="height:30%"></div><div class="bar" style="height:42%"></div>
+            <div class="bar" style="height:38%"></div><div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:63%"></div><div class="bar" style="height:78%"></div>
+            <div class="bar" style="height:96%"></div>
+          </div>
+          <div id="chart-lbl" data-layout-ignore><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+        </div>
+        <div id="pipe">
+          <div class="stage">New</div><div class="stage">Contacted</div><div class="stage">Qualified</div><div class="stage" style="color:var(--green)">Won ✓</div>
+          <div id="lead"><b>Sarah Lee</b><small>src: google-ads</small><span class="tag">HOT LEAD</span></div>
+        </div>
+        <div class="src" id="src1" style="left:70px;top:1560px;color:var(--cyan)">#facebook</div>
+        <div class="src" id="src2" style="left:360px;top:1560px;color:var(--amber)">#google</div>
+        <div class="src" id="src3" style="left:620px;top:1560px;color:var(--pink)">#instagram</div>
+      </section>
+
+      <!-- ===== S6 FOLLOW-UP 38-47 ===== -->
+      <section id="s6" class="clip scene" data-start="38" data-duration="9" data-track-index="0">
+        <div class="kicker">Method 04 · Auto follow-up</div>
+        <h1 class="headline" style="font-size:84px"><span class="word">Follow</span> <span class="word">up</span> <span class="word">on</span><br /><span class="word hl">autopilot</span></h1>
+        <div id="tl">
+          <div id="tl-line-bg"></div><div id="tl-line"></div>
+          <div class="tnode" id="n1" style="top:40px">1</div>
+          <div class="tnode" id="n2" style="top:260px">2</div>
+          <div class="tnode" id="n3" style="top:480px">3</div>
+          <div class="tnode" id="n4" style="top:700px">4</div>
+          <div class="tmsg card" id="m1" style="top:0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+            <div><span class="day">MINUTE 0</span><b>Welcome email</b><small>"Thanks Sarah, here's your quote"</small></div></div>
+          <div class="tmsg card" id="m2" style="top:220px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>
+            <div><span class="day">DAY 1</span><b>WhatsApp reminder</b><small>"Any questions? We're here"</small></div></div>
+          <div class="tmsg card" id="m3" style="top:440px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"/></svg>
+            <div><span class="day">DAY 3</span><b>Case study &amp; reviews</b><small>Build trust automatically</small></div></div>
+          <div class="tmsg card" id="m4" style="top:660px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M20 12v9H4v-9"/><rect x="2" y="7" width="20" height="5"/><path d="M12 21V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+            <div><span class="day">DAY 7</span><b>Limited-time offer</b><small>Nudge to buy now</small></div></div>
+          <div id="reply">"Yes, let's do it!" 💬</div>
+        </div>
+      </section>
+
+      <!-- ===== S7 LOOP 47-53 ===== -->
+      <section id="s7" class="clip scene" data-start="47" data-duration="6" data-track-index="0">
+        <div class="kicker">The result</div>
+        <h1 class="headline" style="font-size:86px"><span class="word">A</span> <span class="word">sales</span> <span class="word">machine</span><br /><span class="word">that</span> <span class="word hl">never</span> <span class="word hl">sleeps</span></h1>
+        <div id="loop">
+          <svg id="ring" viewBox="0 0 900 900">
+            <circle cx="450" cy="450" r="340" fill="none" stroke="#2a3560" stroke-width="6" />
+            <circle id="ring-prog" cx="450" cy="450" r="340" fill="none" stroke="#22c55e" stroke-width="8"
+              stroke-linecap="round" stroke-dasharray="2136" stroke-dashoffset="2136" transform="rotate(-90 450 450)" />
+          </svg>
+          <div id="core"><b id="k-sales">+0%</b><small>more sales</small></div>
+          <div class="lnode" id="l1" style="left:450px;top:110px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><b>Attract</b></div>
+          <div class="lnode" id="l2" style="left:773px;top:345px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><b>Capture</b></div>
+          <div class="lnode" id="l3" style="left:650px;top:725px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg><b>Track</b></div>
+          <div class="lnode" id="l4" style="left:250px;top:725px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg><b>Follow up</b></div>
+          <div class="lnode" id="l5" style="left:127px;top:345px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><b>Convert</b></div>
+        </div>
+        <div class="sub" id="loop-note" style="margin-top:20px;font-size:28px">*Illustrative figure — results vary by business</div>
+      </section>
+
+      <!-- ===== S8 CTA 53-58 ===== -->
+      <section id="s8" class="clip scene" data-start="53" data-duration="5" data-track-index="0">
+        <div class="kicker">Stop losing leads</div>
+        <h1 class="headline" style="font-size:104px"><span class="word">Build</span> <span class="word">a</span> <span class="word">website</span><br /><span class="word">that</span> <span class="word hl">sells</span><br /><span class="word">while</span> <span class="word">you</span> <span class="word hc">sleep</span></h1>
+        <div class="chk"><span>Funnels</span><span>Auto forms</span><span>Tracking</span><span>Follow-up</span></div>
+        <div id="cta-btn">Book a free strategy call ➜</div>
+      </section>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const q = (s) => document.querySelectorAll(s);
+
+      // helpers
+      function words(scene, t) {
+        tl.fromTo(`${scene} .word`, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.07, ease: "back.out(1.6)" }, t);
+        tl.fromTo(`${scene} .kicker`, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, t);
+      }
+      function exit(scene, t) {
+        tl.to(`${scene}`, { opacity: 0, y: -60, duration: 0.4, ease: "power2.in" }, t);
+      }
+      function counter(sel, to, t, d, fmt) {
+        const o = { v: 0 };
+        const el = document.querySelector(sel);
+        tl.to(o, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = fmt(o.v); } }, t);
+      }
+      function stepOn(n, t) { tl.to(`#st${n} .bar i`, { scaleX: 1, duration: 0.6, ease: "power2.out" }, t);
+        tl.to(`#st${n} span`, { color: "#ffffff", duration: 0.3 }, t); }
+
+      // persistent: bg drift, ticker
+      tl.to("#bg", { x: 80, y: 160, duration: 58, ease: "none" }, 0);
+      tl.to("#glow1", { x: 300, y: 500, duration: 58, ease: "sine.inOut" }, 0);
+      tl.to("#glow2", { x: -250, y: -400, duration: 58, ease: "sine.inOut" }, 0);
+      tl.fromTo("#ticker-strip", { x: 0 }, { x: -3600, duration: 58, ease: "none" }, 0);
+      
+
+      tl.fromTo("#logo", { scale: 0.85 }, { scale: 1, duration: 0.6, ease: "back.out(2)" }, 0);
+      tl.to("#logo", { scale: 1.08, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 54.6);
+
+      // ---- S1 0-5
+      tl.fromTo("#s1 .word", { scale: 1.08 }, { scale: 1, duration: 0.6, stagger: 0.05, ease: "power2.out" }, 0);
+      tl.fromTo("#browser", { y: 60, scale: 0.96 }, { y: 0, scale: 1, duration: 0.9, ease: "power3.out" }, 0);
+      tl.fromTo("#cursor", { x: 900, y: 1700, opacity: 0 }, { x: 330, y: 1080, opacity: 1, duration: 1.1, ease: "power2.inOut" }, 1.5);
+      tl.to("#b-cta", { scale: 0.92, duration: 0.12, yoyo: true, repeat: 1 }, 2.6);
+      tl.to("#cursor", { scale: 0.8, duration: 0.12, yoyo: true, repeat: 1 }, 2.6);
+      tl.fromTo("#badge247", { scale: 0, rotation: -30 }, { scale: 1, rotation: -6, duration: 0.6, ease: "back.out(2)" }, 2.9);
+      stepOn(1, 1.0);
+      exit("#s1", 4.6);
+
+      // ---- S2 5-11
+      words("#s2", 5.1);
+      tl.from("#site-box", { scale: 0.6, opacity: 0, duration: 0.5, ease: "back.out(1.6)" }, 5.6);
+      q(".v2").forEach((el, i) => {
+        const t0 = 6.0 + i * 0.25;
+        tl.fromTo(el, { x: 0, y: 0, opacity: 0 }, { x: 470 + i * 60, opacity: 1, duration: 0.7, ease: "power1.inOut" }, t0);
+        tl.to(el, { x: 1300, y: (i % 2 ? -260 : 260), opacity: 0, duration: 0.8, ease: "power1.in" }, t0 + 0.7);
+      });
+      tl.from("#x1", { scale: 0, opacity: 0, duration: 0.4, ease: "back.out(2)" }, 7.6);
+      tl.from("#x2", { scale: 0, opacity: 0, duration: 0.4, ease: "back.out(2)" }, 8.1);
+      tl.from("#x3", { scale: 0, opacity: 0, duration: 0.4, ease: "back.out(2)" }, 8.6);
+      tl.to("#site-box", { borderColor: "#f87171", duration: 0.3 }, 7.6);
+      exit("#s2", 10.6);
+
+      // ---- S3 11-20
+      words("#s3", 11.1);
+      ["#t1", "#t2", "#t3", "#t4"].forEach((s, i) =>
+        tl.from(s, { opacity: 0, scaleX: 0.3, duration: 0.5, ease: "back.out(1.4)" }, 11.8 + i * 0.35));
+      q(".d3").forEach((el, i) => {
+        const t0 = 13.6 + i * 0.45;
+        const stop = [180, 370, 760, 560, 760][i]; // where each lead stops / converts
+        tl.fromTo(el, { y: 0, opacity: 0 }, { y: stop, opacity: 1, duration: 1.0, ease: "power1.in" }, t0);
+        if (stop < 700) tl.to(el, { x: i % 2 ? 360 : -360, opacity: 0, duration: 0.5 }, t0 + 1.0);
+        else tl.to(el, { scale: 1.8, backgroundColor: "#22c55e", duration: 0.3, yoyo: true, repeat: 1 }, t0 + 1.0);
+      });
+      tl.to("#t4", { scale: 1.05, duration: 0.25, yoyo: true, repeat: 3 }, 15.8);
+      tl.from("#f-sub", { opacity: 0, y: 30, duration: 0.5 }, 16.6);
+      stepOn(2, 12.0);
+      exit("#s3", 19.6);
+
+      // ---- S4 20-29
+      words("#s4", 20.1);
+      tl.from("#form", { y: 100, opacity: 0, duration: 0.6, ease: "power3.out" }, 20.6);
+      tl.to("#ty1", { clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "steps(9)" }, 21.2);
+      tl.to("#ty2", { clipPath: "inset(0 0% 0 0)", duration: 1.0, ease: "steps(15)" }, 22.1);
+      tl.to("#ty3", { clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "steps(11)" }, 23.2);
+      tl.to("#submit", { scale: 0.94, duration: 0.12, yoyo: true, repeat: 1 }, 24.1);
+      tl.to("#submit", { backgroundColor: "#38bdf8", duration: 0.2 }, 24.2);
+      tl.from("#hub", { scale: 0, opacity: 0, duration: 0.5, ease: "back.out(2)" }, 24.4);
+      q(".wire").forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+      tl.to(".wire", { strokeDashoffset: 0, duration: 0.7, stagger: 0.12, ease: "power2.out" }, 24.9);
+      tl.from("#instant", { opacity: 0, scale: 0.5, duration: 0.4, ease: "back.out(2)" }, 25.2);
+      tl.from("#s4 .dest", { y: 60, opacity: 0, duration: 0.5, stagger: 0.15, ease: "back.out(1.6)" }, 25.4);
+      tl.to("#s4 .dest", { borderColor: "#22c55e", duration: 0.3, stagger: 0.15 }, 26.4);
+      exit("#s4", 28.6);
+
+      // ---- S5 29-38
+      words("#s5", 29.1);
+      stepOn(3, 29.6);
+      tl.from("#dash", { y: 100, opacity: 0, duration: 0.6, ease: "power3.out" }, 29.7);
+      counter("#k1", 12480, 30.2, 2.2, (v) => Math.round(v).toLocaleString("en-US"));
+      counter("#k2", 936, 30.4, 2.2, (v) => Math.round(v).toLocaleString("en-US"));
+      counter("#k3", 214, 30.6, 2.2, (v) => Math.round(v).toLocaleString("en-US"));
+      tl.fromTo("#chart .bar", { scaleY: 0 }, { scaleY: 1, duration: 0.6, stagger: 0.12, ease: "back.out(1.4)" }, 30.4);
+      tl.from("#pipe .stage", { opacity: 0, y: 40, duration: 0.4, stagger: 0.1 }, 32.0);
+      tl.from("#lead", { opacity: 0, scale: 0.6, duration: 0.4, ease: "back.out(2)" }, 32.6);
+      tl.to("#lead", { x: 234, duration: 0.6, ease: "power2.inOut" }, 33.4);
+      tl.to("#lead", { x: 468, duration: 0.6, ease: "power2.inOut" }, 34.2);
+      tl.to("#lead", { x: 702, borderColor: "#22c55e", duration: 0.6, ease: "power2.inOut" }, 35.0);
+      tl.from(["#src1", "#src2", "#src3"], { opacity: 0, y: 40, duration: 0.4, stagger: 0.2, ease: "back.out(2)" }, 34.0);
+      exit("#s5", 37.6);
+
+      // ---- S6 38-47
+      words("#s6", 38.1);
+      stepOn(4, 38.6);
+      tl.fromTo("#tl-line", { scaleY: 0 }, { scaleY: 1, duration: 5.0, ease: "none" }, 38.9);
+      [["#n1", "#m1"], ["#n2", "#m2"], ["#n3", "#m3"], ["#n4", "#m4"]].forEach(([n, m], i) => {
+        const t0 = 38.9 + i * 1.3;
+        tl.from(n, { scale: 0, duration: 0.4, ease: "back.out(2.5)" }, t0);
+        tl.from(m, { x: 200, opacity: 0, duration: 0.5, ease: "power3.out" }, t0 + 0.1);
+      });
+      tl.fromTo("#reply", { scale: 0, transformOrigin: "100% 100%" }, { scale: 1, duration: 0.5, ease: "back.out(2)" }, 44.3);
+      stepOn(5, 44.3);
+      exit("#s6", 46.6);
+
+      // ---- S7 47-53
+      words("#s7", 47.1);
+      tl.from("#core", { scale: 0, duration: 0.6, ease: "back.out(1.6)" }, 47.6);
+      tl.to("#ring-prog", { attr: { "stroke-dashoffset": 0 }, duration: 2.5, ease: "power1.inOut" }, 47.9);
+      ["#l1", "#l2", "#l3", "#l4", "#l5"].forEach((s, i) => {
+        tl.from(s, { scale: 0, duration: 0.4, ease: "back.out(2)" }, 47.9 + i * 0.5);
+        tl.to(s, { borderColor: "#22c55e", duration: 0.2 }, 48.1 + i * 0.5);
+      });
+      counter("#k-sales", 3, 48.0, 2.6, (v) => "+" + Math.round(v) + "x");
+      tl.from("#loop-note", { opacity: 0, duration: 0.4 }, 50.5);
+      tl.to("#core", { scale: 1.08, duration: 0.3, yoyo: true, repeat: 3 }, 50.6);
+      exit("#s7", 52.6);
+
+      // ---- S8 53-58
+      words("#s8", 53.1);
+      tl.from(".chk span", { opacity: 0, y: 30, duration: 0.4, stagger: 0.12 }, 54.0);
+      tl.from("#cta-btn", { scale: 0, duration: 0.6, ease: "back.out(2)" }, 54.6);
+      tl.to("#cta-btn", { scale: 1.06, duration: 0.4, yoyo: true, repeat: 3, ease: "sine.inOut" }, 55.4);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

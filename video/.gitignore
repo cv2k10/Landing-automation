@@ -1,0 +1,4 @@
+node_modules/
+sales-automation/.hyperframes/
+.*.hf-transaction-*/
+work-*/
