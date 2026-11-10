@@ -10,6 +10,8 @@ word-by-word highlighting.
 | `hosting-explainer/` | Which hosting to choose for a client: shared, static, VPS, managed WordPress, cloud, plus a quick decision guide | ~76 s |
 | `github-explainer/` | What GitHub and a repository are: version control, commits, backup, recover, clone, feature branches, pull requests, teamwork | ~69 s |
 
+Each reel opens on a 4 s cover (title + one-line description) before the narration; set `coverDuration` in `scenes.mjs` meta and edit the `cover` scene to change it.
+
 Rendered files: `renders/hosting-explainer-reel.mp4`, `renders/github-explainer-reel.mp4`.
 
 ## How it is built

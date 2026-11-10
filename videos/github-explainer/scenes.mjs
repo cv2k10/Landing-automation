@@ -1,11 +1,12 @@
 // Scenes for "What is GitHub and a repository?" (portrait, 1080x1920)
-import { C, A, logo, icon, browser, laptop, folder, avatar, cloudShape } from "../_tools/kit.mjs";
+import { C, A, logo, icon, browser, laptop, folder, avatar, cloudShape, cover } from "../_tools/kit.mjs";
 
 export const meta = {
   title: "What Is GitHub",
   series: "WEB BUILDER BASICS",
   glowA: C.purple,
   glowB: C.green,
+  coverDuration: 4,
   variables: [{ id: "series", type: "string", label: "Series label", default: "WEB BUILDER BASICS" }],
 };
 
@@ -17,6 +18,16 @@ const codeLines = (rows) =>
   rows.map(([ind, w, col]) => `<div style="height:22px;margin:0 0 22px ${ind * 44}px;width:${w}px;border-radius:11px;background:${col}"></div>`).join("");
 
 export const scenes = {
+  cover: ({ dur }) => cover({
+    series: "WEB BUILDER BASICS",
+    dur,
+    emblemH: 260,
+    emblem: `<svg width="300" height="200" viewBox="0 0 300 200"><path d="M10 100H290" stroke="${C.green}" stroke-width="12" stroke-linecap="round"/><path d="M80 100C80 40 140 40 170 40H230C250 40 260 70 260 100" fill="none" stroke="${C.purple}" stroke-width="12" stroke-linecap="round"/>${[30, 80, 260].map((x) => `<circle cx="${x}" cy="100" r="18" fill="${C.ground}" stroke="${C.green}" stroke-width="9"/>`).join("")}${[170, 220].map((x) => `<circle cx="${x}" cy="40" r="18" fill="${C.ground}" stroke="${C.purple}" stroke-width="9"/>`).join("")}</svg>
+      <div style="width:240px;height:240px;border-radius:50%;background:${C.ink};display:flex;align-items:center;justify-content:center;box-shadow:0 0 80px rgba(166,139,255,0.45)">${logo("github", 170, C.ground)}</div>`,
+    title: `What's <span class="y">GitHub</span> &amp; a repository?`,
+    desc: "Version control, backups, branches and pull requests, explained for beginners.",
+  }),
+
   hook: ({ T, dur }) => ({
     html: `
       <div id="hook-title" class="h1" style="top:250px">Wish you could hit <span class="y">undo?</span></div>

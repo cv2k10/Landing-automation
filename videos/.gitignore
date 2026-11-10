@@ -2,3 +2,4 @@
 **/node_modules/
 renders/.*-transaction-*/
 renders/work-*/
+renders/*-raw.mp4

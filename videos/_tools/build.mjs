@@ -12,6 +12,16 @@ const W = 1080, H = 1920;
 const proj = process.cwd();
 const timing = JSON.parse(fs.readFileSync("timing.json", "utf8"));
 const { meta, scenes: defs } = await import(pathToFileURL(path.join(proj, "scenes.mjs")).href + `?t=${Date.now()}`);
+// Optional silent cover scene: shift every scene, word and the voiceover by its length.
+const COVER = defs.cover ? +(meta.coverDuration ?? 4) : 0;
+if (COVER) {
+  for (const sc of timing.scenes) {
+    sc.start += COVER; sc.end += COVER; sc.voiceStart += COVER; sc.voiceEnd += COVER;
+    sc.words = sc.words.map((w) => ({ ...w, start: w.start + COVER, end: w.end + COVER }));
+  }
+  timing.scenes.unshift({ id: "cover", start: 0, duration: COVER, end: COVER, words: [] });
+  timing.total += COVER;
+}
 fs.mkdirSync("compositions", { recursive: true });
 fs.mkdirSync("assets/sfx", { recursive: true });
 const SFX_SRC = "/root/.claude/skills/media-use/audio/assets/sfx";
@@ -149,7 +159,7 @@ fs.writeFileSync("index.html", `<!doctype html>
       <div id="brand" data-layout-ignore data-var-text="series">${meta.series}</div>
 ${hosts}
       <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="${f(timing.total)}" data-track-index="2" data-track-kind="captions" data-width="${W}" data-height="${H}" style="z-index:5"></div>
-      <audio id="voiceover" class="clip" src="assets/voice/voiceover.wav" data-start="0" data-track-index="3" data-volume="1"></audio>
+      <audio id="voiceover" class="clip" src="assets/voice/voiceover.wav" data-start="${f(COVER)}" data-track-index="3" data-volume="1"></audio>
 ${sfx}
     </div>
     <script>

@@ -143,3 +143,24 @@ export const A = {
     return s;
   },
 };
+
+// Cover card shown before the narration: series chip, emblem, title, description.
+// Everything is already on screen at frame 0 (it doubles as the reel thumbnail);
+// only gentle motion runs while it holds.
+export function cover({ series, emblem, emblemH = 300, title, desc, dur }) {
+  const titleTop = 330 + emblemH + 50;
+  const html = `
+      <div id="cover-chip" class="topic" style="top:220px"><b>${series}</b></div>
+      <div id="cover-emblem" class="abs" style="left:0;top:330px;width:1080px;height:${emblemH}px;display:flex;align-items:center;justify-content:center;gap:24px">${emblem}</div>
+      <div class="abs" style="left:60px;top:${titleTop}px;width:960px;display:flex;flex-direction:column;align-items:center;gap:36px">
+        <div id="cover-title" style="width:960px;text-align:center;font:900 96px/1.02 Montserrat, sans-serif;letter-spacing:-0.02em">${title}</div>
+        <div id="cover-rule" style="width:200px;height:12px;border-radius:6px;background:${C.yellow}"></div>
+        <div id="cover-desc" style="width:860px;text-align:center;font:700 42px/1.3 Inter, sans-serif;color:${C.muted}">${desc}</div>
+      </div>`;
+  const js = [
+    `tl.fromTo("#cover-title",{scale:1},{scale:1.035,duration:${(dur - 0.3).toFixed(2)},ease:"sine.inOut"},0);`,
+    `tl.fromTo("#cover-emblem",{y:0},{y:-16,duration:${(dur - 0.3).toFixed(2)},ease:"sine.inOut"},0);`,
+    `tl.fromTo("#cover-rule",{scaleX:0.55},{scaleX:1,duration:0.9,ease:"power3.out"},0);`,
+  ].join("\n");
+  return { html, js };
+}

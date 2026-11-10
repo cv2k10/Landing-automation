@@ -1,11 +1,12 @@
 // Scenes for "Which hosting should you pick for your client?" (portrait, 1080x1920)
-import { C, A, logo, icon, browser, wireframe, cloudShape } from "../_tools/kit.mjs";
+import { C, A, logo, icon, browser, wireframe, cloudShape, cover } from "../_tools/kit.mjs";
 
 export const meta = {
   title: "Which Hosting For Your Client",
   series: "WEB BUILDER BASICS",
   glowA: C.purple,
   glowB: C.cyan,
+  coverDuration: 4,
   variables: [{ id: "series", type: "string", label: "Series label", default: "WEB BUILDER BASICS" }],
 };
 
@@ -30,7 +31,26 @@ function house(id, cols, rows, x, y, w, h, mine) {
     ${win}</div>`;
 }
 
+const coverTile = (inner, label, col) =>
+  `<div style="width:166px;display:flex;flex-direction:column;align-items:center;gap:14px"><div style="width:156px;height:156px;border-radius:32px;background:${C.panel};border:4px solid ${col};display:flex;align-items:center;justify-content:center">${inner}</div><span style="font:800 28px Montserrat;color:${col}">${label}</span></div>`;
+const houseIcon = (s, c) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24"><path d="M3 11L12 3l9 8v10H3z" fill="${c}"/><rect x="7" y="13" width="3" height="3" fill="${C.panel}"/><rect x="14" y="13" width="3" height="3" fill="${C.panel}"/></svg>`;
+
 export const scenes = {
+  cover: ({ dur }) => cover({
+    series: "WEB BUILDER BASICS",
+    dur,
+    emblem: [
+      coverTile(houseIcon(80, C.yellow), "SHARED", C.yellow),
+      coverTile(icon.bolt(80, C.cyan), "STATIC", C.cyan),
+      coverTile(icon.key(80, C.purple), "VPS", C.purple),
+      coverTile(logo("wordpress", 76, C.green), "MANAGED", C.green),
+      coverTile(icon.cloud(84, C.orange), "CLOUD", C.orange),
+    ].join(""),
+    emblemH: 220,
+    title: `Which <span class="y">hosting</span> should you choose?`,
+    desc: "Shared, static, VPS, managed or cloud: pick the right one for every client.",
+  }),
+
   hook: ({ T, dur }) => ({
     html: `
       <div id="hook-title" class="h1" style="top:250px">Where should it <span class="y">live?</span></div>
