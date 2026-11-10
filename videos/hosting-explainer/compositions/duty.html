@@ -1,0 +1,41 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="duty" data-width="1080" data-height="1920">
+    <div class="stage" id="duty-stage">
+<div id="duty-topic" class="topic"><b>THE CATCH</b></div>
+      <div id="duty-title" class="h1" style="top:290px">You're the <span class="y">landlord</span></div><div id="duty-t1" class="card" style="left:130px;top:520px;width:820px;height:140px;display:flex;align-items:center;gap:34px;padding:0 40px"><svg width="70" height="70" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6" fill="none" stroke="#3DDCFF" stroke-width="2.6" stroke-linecap="round"/><path d="M20 3v5h-5" fill="none" stroke="#3DDCFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font:900 56px Montserrat">Updates</span>
+        <span id="duty-t1-stamp" style="margin-left:auto;padding:10px 22px;border:5px solid #FF5A6A;border-radius:14px;color:#FF5A6A;font:900 34px Montserrat;letter-spacing:0.06em">ON YOU</span></div><div id="duty-t2" class="card" style="left:130px;top:690px;width:820px;height:140px;display:flex;align-items:center;gap:34px;padding:0 40px"><svg width="70" height="70" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="3" fill="#3DDCFF"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="#3DDCFF" stroke-width="2.6"/></svg><span style="font:900 56px Montserrat">Security</span>
+        <span id="duty-t2-stamp" style="margin-left:auto;padding:10px 22px;border:5px solid #FF5A6A;border-radius:14px;color:#FF5A6A;font:900 34px Montserrat;letter-spacing:0.06em">ON YOU</span></div><div id="duty-t3" class="card" style="left:130px;top:860px;width:820px;height:140px;display:flex;align-items:center;gap:34px;padding:0 40px"><svg width="70" height="70" viewBox="0 0 24 24"><path fill="#3DDCFF" d="M7 19a5 5 0 0 1-.6-9.96A6.5 6.5 0 0 1 19 9.5a4.75 4.75 0 0 1-.25 9.5z"/></svg><span style="font:900 56px Montserrat">Backups</span>
+        <span id="duty-t3-stamp" style="margin-left:auto;padding:10px 22px;border:5px solid #FF5A6A;border-radius:14px;color:#FF5A6A;font:900 34px Montserrat;letter-spacing:0.06em">ON YOU</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#duty-title",{opacity:0,y:30},{opacity:1,y:0,duration:0.45,ease:"power3.out"},0.590);
+tl.fromTo("#duty-t1",{opacity:0,x:140},{opacity:1,x:0,duration:0.45,ease:"power3.out"},1.640);
+tl.fromTo("#duty-t2",{opacity:0,x:140},{opacity:1,x:0,duration:0.45,ease:"power3.out"},2.120);
+tl.fromTo("#duty-t3",{opacity:0,x:140},{opacity:1,x:0,duration:0.45,ease:"power3.out"},3.170);
+tl.fromTo("#duty-t1-stamp",{opacity:0,scale:1.8},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},3.530);
+tl.fromTo("#duty-t2-stamp",{opacity:0,scale:1.8},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},3.650);
+tl.fromTo("#duty-t3-stamp",{opacity:0,scale:1.8},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},3.770);
+      tl.to("#duty-stage",{opacity:0,y:-36,duration:0.22,ease:"power2.in"},4.156);
+      window.__timelines["duty"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,42 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="team" data-width="1080" data-height="1920">
+    <div class="stage" id="team-stage">
+<div id="team-topic" class="topic"><b>TEAMWORK</b></div>
+      <div id="team-site" class="card" style="left:620px;top:470px;width:380px;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+        <div style="font:900 44px Montserrat">One website</div><div class="mono" style="font-size:28px;color:#39E58C">main</div></div>
+      <svg class="abs" style="left:0;top:0" width="1080" height="1100" viewBox="0 0 1080 1100"><path id="team-p0" d="M200 380 C420 380 420 600 610 600" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110" fill="none" stroke="#3DDCFF" stroke-width="12" stroke-linecap="round"/><path id="team-p1" d="M200 600 C420 600 420 600 610 600" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110" fill="none" stroke="#A68BFF" stroke-width="12" stroke-linecap="round"/><path id="team-p2" d="M200 820 C420 820 420 600 610 600" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110" fill="none" stroke="#FF9F43" stroke-width="12" stroke-linecap="round"/></svg><div id="team-a0" class="abs" style="left:90px;top:325px;width:110px;height:110px;border-radius:50%;background:#3DDCFF;color:#0B1020;display:flex;align-items:center;justify-content:center;font:900 51px/1 Montserrat">A</div><div id="team-a1" class="abs" style="left:90px;top:545px;width:110px;height:110px;border-radius:50%;background:#A68BFF;color:#0B1020;display:flex;align-items:center;justify-content:center;font:900 51px/1 Montserrat">B</div><div id="team-a2" class="abs" style="left:90px;top:765px;width:110px;height:110px;border-radius:50%;background:#FF9F43;color:#0B1020;display:flex;align-items:center;justify-content:center;font:900 51px/1 Montserrat">C</div><div id="team-ok" class="pill" style="left:200px;top:960px;width:680px;height:96px;font-size:38px;background:#39E58C;border-color:#39E58C;color:#0B1020"><svg width="44" height="44" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#0B1020"/><path d="M11 20.5l6 6 12-13" fill="none" stroke="#39E58C" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg> NO OVERWRITES</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#team-site",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.050);
+tl.fromTo("#team-a0",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.690);
+tl.fromTo("#team-a1",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.840);
+tl.fromTo("#team-a2",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.990);
+tl.fromTo("#team-p0",{strokeDashoffset:110},{strokeDashoffset:0,duration:0.7,ease:"power2.inOut"},2.650);
+tl.fromTo("#team-p1",{strokeDashoffset:110},{strokeDashoffset:0,duration:0.7,ease:"power2.inOut"},2.730);
+tl.fromTo("#team-p2",{strokeDashoffset:110},{strokeDashoffset:0,duration:0.7,ease:"power2.inOut"},2.810);
+tl.to("#team-site",{"scale":1.06,"duration":0.15,"yoyo":true,"repeat":1},3.210);
+tl.fromTo("#team-ok",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},3.890);
+      tl.to("#team-stage",{opacity:0,y:-36,duration:0.22,ease:"power2.in"},5.265);
+      window.__timelines["team"] = tl;
+    })();
+  </script>
+</template>

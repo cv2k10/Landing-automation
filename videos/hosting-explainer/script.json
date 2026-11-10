@@ -1,0 +1,17 @@
+{
+  "voice": "af_heart",
+  "speed": 1.05,
+  "scenes": [
+    {"id": "hook",    "text": "Your client's website is finished. But where should it live? Let's pick the right hosting in one minute."},
+    {"id": "shared",  "text": "Shared hosting is like renting a room in a big house. It's cheap, easy, and great for small WordPress sites."},
+    {"id": "noisy",   "text": "The catch? You share one server with hundreds of neighbors, so a traffic spike next door can slow you down."},
+    {"id": "static",  "text": "Static hosting, like Netlify, Vercel, or GitHub Pages, serves plain files from a global network. Often free, and super fast."},
+    {"id": "fit",     "text": "Perfect for landing pages and portfolios. But there's no PHP and no database built in."},
+    {"id": "vps",     "text": "A VPS is your own apartment: a private virtual server with full control. Ideal for Laravel or custom apps."},
+    {"id": "duty",    "text": "But now you're the landlord. Updates, security, and backups are all on you."},
+    {"id": "managed", "text": "Managed WordPress hosting costs more, but experts handle speed, backups, and security, so your client can relax."},
+    {"id": "cloud",   "text": "And cloud platforms like AWS or Google Cloud can scale to millions of visitors. Powerful, but complex to set up."},
+    {"id": "guide",   "text": "Quick guide. Landing page? Go static. Small business WordPress? Shared or managed. Custom app? VPS. Huge traffic? Cloud."},
+    {"id": "outro",   "text": "Match the hosting to the project, not the hype. Follow for more web builder tips."}
+  ]
+}

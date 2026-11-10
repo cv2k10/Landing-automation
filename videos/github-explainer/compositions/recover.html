@@ -1,0 +1,52 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="recover" data-width="1080" data-height="1920">
+    <div class="stage" id="recover-stage">
+<div id="recover-topic" class="topic"><b>RECOVER</b></div>
+      <div id="recover-site" class="card" style="left:190px;top:300px;width:700px;height:380px;overflow:hidden">
+  <div style="height:72px;background:#1C2547;display:flex;align-items:center;gap:14px;padding:0 26px;border-bottom:3px solid #2A3563">
+    <i style="width:20px;height:20px;border-radius:50%;background:#FF5A6A"></i><i style="width:20px;height:20px;border-radius:50%;background:#FFD23F"></i><i style="width:20px;height:20px;border-radius:50%;background:#39E58C"></i>
+    <span class="mono" style="margin-left:18px;flex:1;height:44px;border-radius:22px;background:#0B1020;color:#9AA4C7;font-size:28px;display:flex;align-items:center;padding-left:22px">yourclient.com</span>
+  </div><div style="position:relative;height:304px"><div id="recover-bad" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:20px;font:900 52px Montserrat;color:#FF5A6A"><svg width="70" height="70" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#FF5A6A"/><path d="M13 13l14 14M27 13L13 27" fill="none" stroke="#0B1020" stroke-width="4.5" stroke-linecap="round"/></svg> Bug on live</div>
+        <div id="recover-good" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:20px;font:900 52px Montserrat;color:#39E58C;opacity:0"><svg width="70" height="70" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#39E58C"/><path d="M11 20.5l6 6 12-13" fill="none" stroke="#0B1020" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Working again</div></div></div>
+      <div id="recover-line" class="abs" style="left:150px;top:854px;width:730px;height:12px;border-radius:6px;background:#2A3563"></div><div id="recover-d0" class="abs" style="left:122px;top:832px;width:56px;height:56px;border-radius:50%;background:#0B1020;border:9px solid #39E58C"></div><div id="recover-l0" class="label" style="left:40px;top:910px;width:220px;">Mon</div><div id="recover-d1" class="abs" style="left:362px;top:832px;width:56px;height:56px;border-radius:50%;background:#0B1020;border:9px solid #39E58C"></div><div id="recover-l1" class="label" style="left:280px;top:910px;width:220px;">Tue</div><div id="recover-d2" class="abs" style="left:602px;top:832px;width:56px;height:56px;border-radius:50%;background:#0B1020;border:9px solid #39E58C"></div><div id="recover-l2" class="label" style="left:520px;top:910px;width:220px;color:#39E58C;font-weight:800">Yesterday</div><div id="recover-d3" class="abs" style="left:852px;top:832px;width:56px;height:56px;border-radius:50%;background:#0B1020;border:9px solid #FF5A6A"></div><div id="recover-l3" class="label" style="left:770px;top:910px;width:220px;">Today</div><div id="recover-head" class="pill" style="left:780px;top:730px;width:200px;height:76px;font-size:32px;background:#FFD23F;border-color:#FFD23F;color:#0B1020">LIVE</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#recover-site",{opacity:0,y:40},{opacity:1,y:0,duration:0.45,ease:"power3.out"},0.020);
+tl.fromTo("#recover-line",{scaleX:0,transformOrigin:"0% 50%"},{scaleX:1,duration:0.5,ease:"power2.inOut"},0.100);
+tl.fromTo("#recover-d0",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.150);
+tl.fromTo("#recover-l0",{opacity:0},{opacity:1,duration:0.3,ease:"none"},0.200);
+tl.fromTo("#recover-d1",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.270);
+tl.fromTo("#recover-l1",{opacity:0},{opacity:1,duration:0.3,ease:"none"},0.320);
+tl.fromTo("#recover-d2",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.390);
+tl.fromTo("#recover-l2",{opacity:0},{opacity:1,duration:0.3,ease:"none"},0.440);
+tl.fromTo("#recover-d3",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.510);
+tl.fromTo("#recover-l3",{opacity:0},{opacity:1,duration:0.3,ease:"none"},0.560);
+tl.fromTo("#recover-head",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.700);
+tl.fromTo("#recover-head",{x:0},{x:-250,duration:0.6,ease:"power3.inOut"},2.060);
+tl.to("#recover-bad",{"opacity":0,"duration":0.2},2.610);
+tl.to("#recover-good",{"opacity":1,"duration":0.25},2.660);
+tl.to("#recover-d3",{"opacity":0.3,"duration":0.3},2.610);
+      tl.to("#recover-stage",{opacity:0,y:-36,duration:0.22,ease:"power2.in"},4.518);
+      window.__timelines["recover"] = tl;
+    })();
+  </script>
+</template>

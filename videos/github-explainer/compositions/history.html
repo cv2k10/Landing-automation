@@ -1,0 +1,68 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="history" data-width="1080" data-height="1920">
+    <div class="stage" id="history-stage">
+<div id="history-topic" class="topic"><b>HISTORY</b></div>
+      <div id="history-rail" class="abs" style="left:126px;top:350px;width:10px;height:690px;border-radius:5px;background:#2A3563"></div><div id="history-d0" class="abs" style="left:105px;top:394px;width:52px;height:52px;border-radius:50%;background:#0B1020;border:9px solid #39E58C"></div>
+        <div id="history-r0" class="card" style="left:200px;top:350px;width:820px;height:140px;display:flex;align-items:center;gap:26px;padding:0 30px">
+          <div id="history-a0" style="width:76px;height:76px;flex:none;border-radius:50%;background:#3DDCFF;color:#0B1020;display:flex;align-items:center;justify-content:center;font:900 38px Montserrat">A</div>
+          <div style="flex:1"><div id="history-m0" style="font:800 38px/1.15 Montserrat">Add homepage</div>
+          <div id="history-t0" class="mono" style="font-size:28px;color:#9AA4C7;margin-top:8px">Mon 9:12</div></div></div><div id="history-d1" class="abs" style="left:105px;top:569px;width:52px;height:52px;border-radius:50%;background:#0B1020;border:9px solid #39E58C"></div>
+        <div id="history-r1" class="card" style="left:200px;top:525px;width:820px;height:140px;display:flex;align-items:center;gap:26px;padding:0 30px">
+          <div id="history-a1" style="width:76px;height:76px;flex:none;border-radius:50%;background:#A68BFF;color:#0B1020;display:flex;align-items:center;justify-content:center;font:900 38px Montserrat">B</div>
+          <div style="flex:1"><div id="history-m1" style="font:800 38px/1.15 Montserrat">New hero image</div>
+          <div id="history-t1" class="mono" style="font-size:28px;color:#9AA4C7;margin-top:8px">Tue 14:40</div></div></div><div id="history-d2" class="abs" style="left:105px;top:744px;width:52px;height:52px;border-radius:50%;background:#0B1020;border:9px solid #39E58C"></div>
+        <div id="history-r2" class="card" style="left:200px;top:700px;width:820px;height:140px;display:flex;align-items:center;gap:26px;padding:0 30px">
+          <div id="history-a2" style="width:76px;height:76px;flex:none;border-radius:50%;background:#3DDCFF;color:#0B1020;display:flex;align-items:center;justify-content:center;font:900 38px Montserrat">A</div>
+          <div style="flex:1"><div id="history-m2" style="font:800 38px/1.15 Montserrat">Fix menu on mobile</div>
+          <div id="history-t2" class="mono" style="font-size:28px;color:#9AA4C7;margin-top:8px">Wed 10:05</div></div></div><div id="history-d3" class="abs" style="left:105px;top:919px;width:52px;height:52px;border-radius:50%;background:#0B1020;border:9px solid #39E58C"></div>
+        <div id="history-r3" class="card" style="left:200px;top:875px;width:820px;height:140px;display:flex;align-items:center;gap:26px;padding:0 30px">
+          <div id="history-a3" style="width:76px;height:76px;flex:none;border-radius:50%;background:#FF9F43;color:#0B1020;display:flex;align-items:center;justify-content:center;font:900 38px Montserrat">C</div>
+          <div style="flex:1"><div id="history-m3" style="font:800 38px/1.15 Montserrat">Add contact form</div>
+          <div id="history-t3" class="mono" style="font-size:28px;color:#9AA4C7;margin-top:8px">Today 11:30</div></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#history-rail",{opacity:0},{opacity:1,duration:0.3,ease:"none"},0.020);
+tl.fromTo("#history-d0",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.100);
+tl.fromTo("#history-r0",{opacity:0,x:80},{opacity:1,x:0,duration:0.45,ease:"power3.out"},0.100);
+tl.fromTo("#history-d1",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.420);
+tl.fromTo("#history-r1",{opacity:0,x:80},{opacity:1,x:0,duration:0.45,ease:"power3.out"},0.420);
+tl.fromTo("#history-d2",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},0.740);
+tl.fromTo("#history-r2",{opacity:0,x:80},{opacity:1,x:0,duration:0.45,ease:"power3.out"},0.740);
+tl.fromTo("#history-d3",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},1.060);
+tl.fromTo("#history-r3",{opacity:0,x:80},{opacity:1,x:0,duration:0.45,ease:"power3.out"},1.060);
+tl.to("#history-a0",{"scale":1.2,"duration":0.15,"yoyo":true,"repeat":1},2.720);
+tl.to("#history-m0",{"color":"#FFD23F","duration":0.15},3.390);
+tl.to("#history-t0",{"color":"#3DDCFF","duration":0.15},3.860);
+tl.to("#history-a1",{"scale":1.2,"duration":0.15,"yoyo":true,"repeat":1},2.770);
+tl.to("#history-m1",{"color":"#FFD23F","duration":0.15},3.390);
+tl.to("#history-t1",{"color":"#3DDCFF","duration":0.15},3.860);
+tl.to("#history-a2",{"scale":1.2,"duration":0.15,"yoyo":true,"repeat":1},2.820);
+tl.to("#history-m2",{"color":"#FFD23F","duration":0.15},3.390);
+tl.to("#history-t2",{"color":"#3DDCFF","duration":0.15},3.860);
+tl.to("#history-a3",{"scale":1.2,"duration":0.15,"yoyo":true,"repeat":1},2.870);
+tl.to("#history-m3",{"color":"#FFD23F","duration":0.15},3.390);
+tl.to("#history-t3",{"color":"#3DDCFF","duration":0.15},3.860);
+      tl.to("#history-stage",{opacity:0,y:-36,duration:0.22,ease:"power2.in"},4.156);
+      window.__timelines["history"] = tl;
+    })();
+  </script>
+</template>

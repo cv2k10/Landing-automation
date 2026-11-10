@@ -1,0 +1,65 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="static" data-width="1080" data-height="1920">
+    <div class="stage" id="static-stage">
+
+      <div id="static-topic" class="topic"><b>OPTION 2 · STATIC HOSTING</b></div>
+      <svg id="static-globe" class="abs" style="left:290px;top:340px" width="500" height="500" viewBox="0 0 500 500">
+        <circle cx="250" cy="250" r="240" fill="#141B33" stroke="#3DDCFF" stroke-width="4"/>
+        <ellipse cx="250" cy="250" rx="110" ry="240" fill="none" stroke="#2A3563" stroke-width="3"/>
+        <ellipse cx="250" cy="250" rx="200" ry="240" fill="none" stroke="#2A3563" stroke-width="3"/>
+        <path d="M10 250h480M40 130h420M40 370h420" stroke="#2A3563" stroke-width="3"/>
+      </svg><div id="static-n0" class="abs" style="left:524px;top:404px;width:32px;height:32px;border-radius:50%;background:#3DDCFF;box-shadow:0 0 30px #3DDCFF"></div><div id="static-n1" class="abs" style="left:364px;top:524px;width:32px;height:32px;border-radius:50%;background:#3DDCFF;box-shadow:0 0 30px #3DDCFF"></div><div id="static-n2" class="abs" style="left:684px;top:504px;width:32px;height:32px;border-radius:50%;background:#3DDCFF;box-shadow:0 0 30px #3DDCFF"></div><div id="static-n3" class="abs" style="left:314px;top:684px;width:32px;height:32px;border-radius:50%;background:#3DDCFF;box-shadow:0 0 30px #3DDCFF"></div><div id="static-n4" class="abs" style="left:744px;top:674px;width:32px;height:32px;border-radius:50%;background:#3DDCFF;box-shadow:0 0 30px #3DDCFF"></div><div id="static-n5" class="abs" style="left:454px;top:784px;width:32px;height:32px;border-radius:50%;background:#3DDCFF;box-shadow:0 0 30px #3DDCFF"></div><div id="static-n6" class="abs" style="left:604px;top:774px;width:32px;height:32px;border-radius:50%;background:#3DDCFF;box-shadow:0 0 30px #3DDCFF"></div><div id="static-n7" class="abs" style="left:524px;top:584px;width:32px;height:32px;border-radius:50%;background:#3DDCFF;box-shadow:0 0 30px #3DDCFF"></div><div id="static-f0" class="abs mono" style="left:490px;top:565px;width:100px;height:70px;border-radius:12px;background:#FFD23F;color:#0B1020;font:800 30px/70px 'JetBrains Mono';text-align:center">HTML</div><div id="static-f1" class="abs mono" style="left:490px;top:565px;width:100px;height:70px;border-radius:12px;background:#FFD23F;color:#0B1020;font:800 30px/70px 'JetBrains Mono';text-align:center">CSS</div><div id="static-f2" class="abs mono" style="left:490px;top:565px;width:100px;height:70px;border-radius:12px;background:#FFD23F;color:#0B1020;font:800 30px/70px 'JetBrains Mono';text-align:center">JS</div><div id="static-f3" class="abs mono" style="left:490px;top:565px;width:100px;height:70px;border-radius:12px;background:#FFD23F;color:#0B1020;font:800 30px/70px 'JetBrains Mono';text-align:center">IMG</div>
+      <div id="static-l1" class="pill" style="left:40px;top:880px;width:300px;height:86px;font-size:34px"><svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true"><path fill="#32E6E2" d="M6.49 19.04h-.23L5.13 17.9v-.23l1.73-1.71h1.2l.15.15v1.2L6.5 19.04ZM5.13 6.31V6.1l1.13-1.13h.23L8.2 6.68v1.2l-.15.15h-1.2L5.13 6.31Zm9.96 9.09h-1.65l-.14-.13v-3.83c0-.68-.27-1.2-1.1-1.23-.42 0-.9 0-1.43.02l-.07.08v4.96l-.14.14H8.9l-.13-.14V8.73l.13-.14h3.7a2.6 2.6 0 0 1 2.61 2.6v4.08l-.13.14Zm-8.37-2.44H.14L0 12.82v-1.64l.14-.14h6.58l.14.14v1.64l-.14.14Zm17.14 0h-6.58l-.14-.14v-1.64l.14-.14h6.58l.14.14v1.64l-.14.14ZM11.05 6.55V1.64l.14-.14h1.65l.14.14v4.9l-.14.14h-1.65l-.14-.13Zm0 15.81v-4.9l.14-.14h1.65l.14.13v4.91l-.14.14h-1.65l-.14-.14Z"/></svg> Netlify</div>
+      <div id="static-l2" class="pill" style="left:360px;top:880px;width:280px;height:86px;font-size:34px"><svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F5F7FF" d="m12 1.608 12 20.784H0Z"/></svg> Vercel</div>
+      <div id="static-l3" class="pill" style="left:660px;top:880px;width:380px;height:86px;font-size:32px"><svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F5F7FF" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> GitHub Pages</div>
+      <div id="static-free" class="pill" style="left:180px;top:990px;width:320px;height:86px;font-size:34px;background:#39E58C;border-color:#39E58C;color:#0B1020">OFTEN FREE</div>
+      <div id="static-fast" class="pill" style="left:540px;top:990px;width:360px;height:86px;font-size:34px;background:#FFD23F;border-color:#FFD23F;color:#0B1020"><svg width="40" height="40" viewBox="0 0 24 24"><path fill="#0B1020" d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg> SUPER FAST</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#static-globe",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.5,ease:"back.out(2)"},0.050);
+tl.fromTo("#static-l1",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},1.350);
+tl.fromTo("#static-l2",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},1.920);
+tl.fromTo("#static-l3",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},2.680);
+tl.fromTo("#static-globe",{rotation:0},{rotation:12,duration:8.58,ease:"none"},0);
+tl.fromTo("#static-n0",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.440);
+tl.fromTo("#static-n1",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.500);
+tl.fromTo("#static-n2",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.560);
+tl.fromTo("#static-n3",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.620);
+tl.fromTo("#static-n4",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.680);
+tl.fromTo("#static-n5",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.740);
+tl.fromTo("#static-n6",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.800);
+tl.fromTo("#static-n7",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.860);
+tl.fromTo("#static-f0",{opacity:0,x:0,y:0,scale:0.5},{opacity:1,x:-160,y:-60,scale:1,duration:0.6,ease:"power3.out"},4.660);
+tl.to("#static-f0",{"opacity":0,"scale":0.4,"duration":0.25},6.590);
+tl.fromTo("#static-f1",{opacity:0,x:0,y:0,scale:0.5},{opacity:1,x:160,y:-80,scale:1,duration:0.6,ease:"power3.out"},4.780);
+tl.to("#static-f1",{"opacity":0,"scale":0.4,"duration":0.25},6.620);
+tl.fromTo("#static-f2",{opacity:0,x:0,y:0,scale:0.5},{opacity:1,x:-210,y:100,scale:1,duration:0.6,ease:"power3.out"},4.900);
+tl.to("#static-f2",{"opacity":0,"scale":0.4,"duration":0.25},6.650);
+tl.fromTo("#static-f3",{opacity:0,x:0,y:0,scale:0.5},{opacity:1,x:220,y:90,scale:1,duration:0.6,ease:"power3.out"},5.020);
+tl.to("#static-f3",{"opacity":0,"scale":0.4,"duration":0.25},6.680);
+tl.fromTo("#static-free",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},6.890);
+tl.fromTo("#static-fast",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},7.800);
+      tl.to("#static-stage",{opacity:0,y:-36,duration:0.22,ease:"power2.in"},8.316);
+      window.__timelines["static"] = tl;
+    })();
+  </script>
+</template>

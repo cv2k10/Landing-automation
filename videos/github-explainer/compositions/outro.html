@@ -1,0 +1,38 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="outro" data-width="1080" data-height="1920">
+    <div class="stage" id="outro-stage">
+<div id="outro-w0" class="h1" style="top:300px;font-size:110px;color:#39E58C">Commit.</div><div id="outro-w1" class="h1" style="top:425px;font-size:110px;color:#3DDCFF">Push.</div><div id="outro-w2" class="h1" style="top:550px;font-size:110px;color:#A68BFF">Branch.</div><div id="outro-w3" class="h1" style="top:675px;font-size:110px;color:#FFD23F">Merge.</div><div id="outro-line" class="h2" style="top:830px">Learn GitHub once.<br/><span class="m" style="font-size:44px">Every client project gets safer.</span></div>
+      <div id="outro-follow" class="pill" style="left:240px;top:1010px;width:600px;height:96px;background:#FFD23F;border-color:#FFD23F;color:#0B1020">FOLLOW FOR MORE</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#outro-w0",{opacity:0,scale:1.5},{opacity:1,scale:1,duration:0.3,ease:"back.out(2)"},0.140);
+tl.fromTo("#outro-w1",{opacity:0,scale:1.5},{opacity:1,scale:1,duration:0.3,ease:"back.out(2)"},0.650);
+tl.fromTo("#outro-w2",{opacity:0,scale:1.5},{opacity:1,scale:1,duration:0.3,ease:"back.out(2)"},1.080);
+tl.fromTo("#outro-w3",{opacity:0,scale:1.5},{opacity:1,scale:1,duration:0.3,ease:"back.out(2)"},1.660);
+tl.fromTo("#outro-line",{opacity:0,y:30},{opacity:1,y:0,duration:0.45,ease:"power3.out"},2.090);
+tl.fromTo("#outro-follow",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},4.620);
+tl.to("#outro-follow",{"scale":1.06,"duration":0.4,"ease":"sine.inOut","yoyo":true,"repeat":1},5.590);
+      
+      window.__timelines["outro"] = tl;
+    })();
+  </script>
+</template>

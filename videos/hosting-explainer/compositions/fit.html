@@ -1,0 +1,38 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="fit" data-width="1080" data-height="1920">
+    <div class="stage" id="fit-stage">
+<div id="fit-topic" class="topic"><b>STATIC HOSTING · BEST FOR</b></div><div id="fit-r1" class="card" style="left:110px;top:330px;width:860px;height:150px;display:flex;align-items:center;gap:36px;padding:0 44px;border-color:#39E58C">
+        <svg width="84" height="84" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#39E58C"/><path d="M11 20.5l6 6 12-13" fill="none" stroke="#0B1020" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font:900 60px Montserrat;color:#F5F7FF;">Landing pages</span></div><div id="fit-r2" class="card" style="left:110px;top:510px;width:860px;height:150px;display:flex;align-items:center;gap:36px;padding:0 44px;border-color:#39E58C">
+        <svg width="84" height="84" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#39E58C"/><path d="M11 20.5l6 6 12-13" fill="none" stroke="#0B1020" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font:900 60px Montserrat;color:#F5F7FF;">Portfolios</span></div><div id="fit-r3" class="card" style="left:110px;top:690px;width:860px;height:150px;display:flex;align-items:center;gap:36px;padding:0 44px;border-color:#FF5A6A">
+        <svg width="84" height="84" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#FF5A6A"/><path d="M13 13l14 14M27 13L13 27" fill="none" stroke="#0B1020" stroke-width="4.5" stroke-linecap="round"/></svg><span style="font:900 60px Montserrat;color:#9AA4C7;text-decoration:line-through;text-decoration-thickness:6px">PHP</span></div><div id="fit-r4" class="card" style="left:110px;top:870px;width:860px;height:150px;display:flex;align-items:center;gap:36px;padding:0 44px;border-color:#FF5A6A">
+        <svg width="84" height="84" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#FF5A6A"/><path d="M13 13l14 14M27 13L13 27" fill="none" stroke="#0B1020" stroke-width="4.5" stroke-linecap="round"/></svg><span style="font:900 60px Montserrat;color:#9AA4C7;text-decoration:line-through;text-decoration-thickness:6px">Database</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#fit-r1",{opacity:0,x:-120},{opacity:1,x:0,duration:0.45,ease:"power3.out"},0.850);
+tl.fromTo("#fit-r2",{opacity:0,x:-120},{opacity:1,x:0,duration:0.45,ease:"power3.out"},2.090);
+tl.fromTo("#fit-r3",{opacity:0,x:-120},{opacity:1,x:0,duration:0.45,ease:"power3.out"},3.860);
+tl.fromTo("#fit-r4",{opacity:0,x:-120},{opacity:1,x:0,duration:0.45,ease:"power3.out"},4.470);
+      tl.to("#fit-stage",{opacity:0,y:-36,duration:0.22,ease:"power2.in"},6.012);
+      window.__timelines["fit"] = tl;
+    })();
+  </script>
+</template>

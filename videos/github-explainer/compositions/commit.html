@@ -1,0 +1,51 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="commit" data-width="1080" data-height="1920">
+    <div class="stage" id="commit-stage">
+
+      <div id="commit-topic" class="topic"><b>VERSION CONTROL</b></div>
+      <div id="commit-file" class="card" style="left:150px;top:310px;width:780px;height:420px;padding:40px 44px">
+        <div class="mono" style="font-size:30px;color:#9AA4C7;margin-bottom:28px">index.html</div>
+        <div style="height:22px;margin:0 0 22px 0px;width:380px;border-radius:11px;background:#A68BFF"></div><div style="height:22px;margin:0 0 22px 44px;width:460px;border-radius:11px;background:#3DDCFF"></div><div style="height:22px;margin:0 0 22px 88px;width:300px;border-radius:11px;background:#F5F7FF"></div><div style="height:22px;margin:0 0 22px 88px;width:420px;border-radius:11px;background:#F5F7FF"></div><div style="height:22px;margin:0 0 22px 44px;width:260px;border-radius:11px;background:#3DDCFF"></div><div style="height:22px;margin:0 0 22px 0px;width:200px;border-radius:11px;background:#A68BFF"></div>
+      </div>
+      <div id="commit-flash" class="abs" style="left:150px;top:310px;width:780px;height:420px;border-radius:28px;background:#fff;opacity:0"></div>
+      <div id="commit-git" class="pill" style="left:640px;top:270px;width:260px;height:90px;background:#1C2547;border-color:#F05032"><svg width="50" height="50" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F05032" d="M13.09 23.549a1.54 1.54 0 0 1-2.18 0L.451 13.089a1.54 1.54 0 0 1 0-2.179l7.191-7.19 2.733 2.733a1.85 1.85 0 0 0 .964 2.326v6.66a1.849 1.849 0 1 0 1.54 0V8.957l2.508 2.508a1.85 1.85 0 1 0 1.09-1.09l-2.634-2.634a1.85 1.85 0 0 0-2.378-2.377L8.73 2.63 10.91.451a1.54 1.54 0 0 1 2.179 0l10.459 10.46a1.54 1.54 0 0 1 0 2.179z"/></svg> Git</div>
+      <div id="commit-snap" class="card" style="left:380px;top:790px;width:320px;height:200px;padding:24px 26px;border-color:#FFD23F">
+        <div style="height:14px;margin:0 0 14px 0px;width:160px;border-radius:11px;background:#A68BFF"></div><div style="height:14px;margin:0 0 14px 44px;width:190px;border-radius:11px;background:#3DDCFF"></div><div style="height:14px;margin:0 0 14px 44px;width:130px;border-radius:11px;background:#F5F7FF"></div>
+      </div>
+      <div id="commit-dot" class="abs" style="left:195px;top:855px;width:70px;height:70px;border-radius:50%;background:#0B1020;border:9px solid #39E58C"></div>
+      <div id="commit-label" class="pill" style="left:740px;top:845px;width:280px;height:90px;font-size:38px;background:#39E58C;border-color:#39E58C;color:#0B1020">commit</div>
+      <div id="commit-hash" class="label mono" style="left:700px;top:950px;width:360px;font-size:30px">a1b2c3d</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#commit-file",{opacity:0,y:60},{opacity:1,y:0,duration:0.45,ease:"power3.out"},0.050);
+tl.fromTo("#commit-git",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},2.720);
+tl.fromTo("#commit-flash",{opacity:0},{opacity:0.85,duration:0.06,ease:"none"},3.890);
+tl.to("#commit-flash",{"opacity":0,"duration":0.35,"ease":"power2.out"},3.960);
+tl.fromTo("#commit-snap",{opacity:0,y:-300,scale:1.6,rotation:-8},{opacity:1,y:0,scale:1,rotation:-3,duration:0.6,ease:"power3.out"},3.990);
+tl.fromTo("#commit-dot",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.830);
+tl.fromTo("#commit-label",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},7.600);
+tl.fromTo("#commit-hash",{opacity:0},{opacity:1,duration:0.3,ease:"none"},7.800);
+      tl.to("#commit-stage",{opacity:0,y:-36,duration:0.22,ease:"power2.in"},8.273);
+      window.__timelines["commit"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,48 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="cloud" data-width="1080" data-height="1920">
+    <div class="stage" id="cloud-stage">
+<div id="cloud-topic" class="topic"><b>OPTION 5 · CLOUD PLATFORMS</b></div>
+      <div id="cloud-shape" class="abs" style="left:190px;top:270px;width:700px;height:490px">
+  <svg width="700" height="490" viewBox="1.4 2.4 23 16.1" preserveAspectRatio="none" style="position:absolute;left:0;top:0"><path d="M7 18a5 5 0 0 1-.6-9.96A6.5 6.5 0 0 1 19 8.5a4.75 4.75 0 0 1-.25 9.5z" fill="#1C2547" stroke="#3DDCFF" stroke-width="0.22"/></svg>
+  <div style="position:absolute;left:84px;top:206px;width:546px;height:245px;display:flex;align-items:center;justify-content:center;gap:16px"><span style="font:900 58px Montserrat;color:#FF9F43">AWS</span><span style="font:900 46px Montserrat;color:#9AA4C7">·</span><svg width="52" height="52" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F5F7FF" d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z"/></svg><span style="font:800 38px Montserrat;white-space:nowrap">Google Cloud</span></div></div>
+      <div id="cloud-chart" class="card" style="left:130px;top:700px;width:820px;height:380px;padding:30px">
+        <div class="label" style="position:static;text-align:left;font-size:30px">Visitors</div>
+        <div id="cloud-num" style="font:900 72px Montserrat;color:#3DDCFF">0</div>
+      </div><div id="cloud-b0" class="abs" style="left:520px;top:1010px;width:48px;height:40px;border-radius:10px 10px 4px 4px;background:#3DDCFF"></div><div id="cloud-b1" class="abs" style="left:586px;top:980px;width:48px;height:70px;border-radius:10px 10px 4px 4px;background:#3DDCFF"></div><div id="cloud-b2" class="abs" style="left:652px;top:940px;width:48px;height:110px;border-radius:10px 10px 4px 4px;background:#3DDCFF"></div><div id="cloud-b3" class="abs" style="left:718px;top:880px;width:48px;height:170px;border-radius:10px 10px 4px 4px;background:#3DDCFF"></div><div id="cloud-b4" class="abs" style="left:784px;top:800px;width:48px;height:250px;border-radius:10px 10px 4px 4px;background:#3DDCFF"></div><div id="cloud-b5" class="abs" style="left:850px;top:710px;width:48px;height:340px;border-radius:10px 10px 4px 4px;background:#3DDCFF"></div><div id="cloud-complex" class="pill" style="left:160px;top:930px;width:340px;height:86px;font-size:30px;background:#FF9F43;border-color:#FF9F43;color:#0B1020">COMPLEX SETUP</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#cloud-shape",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.5,ease:"back.out(2)"},0.050);
+tl.fromTo("#cloud-chart",{opacity:0,y:60},{opacity:1,y:0,duration:0.45,ease:"power3.out"},3.360);
+tl.fromTo("#cloud-b0",{scaleY:0,transformOrigin:"50% 100%"},{scaleY:1,duration:0.4,ease:"power3.out"},3.860);
+tl.fromTo("#cloud-b1",{scaleY:0,transformOrigin:"50% 100%"},{scaleY:1,duration:0.4,ease:"power3.out"},3.980);
+tl.fromTo("#cloud-b2",{scaleY:0,transformOrigin:"50% 100%"},{scaleY:1,duration:0.4,ease:"power3.out"},4.100);
+tl.fromTo("#cloud-b3",{scaleY:0,transformOrigin:"50% 100%"},{scaleY:1,duration:0.4,ease:"power3.out"},4.220);
+tl.fromTo("#cloud-b4",{scaleY:0,transformOrigin:"50% 100%"},{scaleY:1,duration:0.4,ease:"power3.out"},4.340);
+tl.fromTo("#cloud-b5",{scaleY:0,transformOrigin:"50% 100%"},{scaleY:1,duration:0.4,ease:"power3.out"},4.460);
+tl.set("#cloud-num",{textContent:"70,153"},3.915);tl.set("#cloud-num",{textContent:"137,755"},3.970);tl.set("#cloud-num",{textContent:"202,806"},4.025);tl.set("#cloud-num",{textContent:"265,306"},4.080);tl.set("#cloud-num",{textContent:"325,255"},4.135);tl.set("#cloud-num",{textContent:"382,653"},4.190);tl.set("#cloud-num",{textContent:"437,500"},4.245);tl.set("#cloud-num",{textContent:"489,796"},4.300);tl.set("#cloud-num",{textContent:"539,541"},4.355);tl.set("#cloud-num",{textContent:"586,735"},4.410);tl.set("#cloud-num",{textContent:"631,378"},4.465);tl.set("#cloud-num",{textContent:"673,469"},4.520);tl.set("#cloud-num",{textContent:"713,010"},4.575);tl.set("#cloud-num",{textContent:"750,000"},4.630);tl.set("#cloud-num",{textContent:"784,439"},4.685);tl.set("#cloud-num",{textContent:"816,327"},4.740);tl.set("#cloud-num",{textContent:"845,663"},4.795);tl.set("#cloud-num",{textContent:"872,449"},4.850);tl.set("#cloud-num",{textContent:"896,684"},4.905);tl.set("#cloud-num",{textContent:"918,367"},4.960);tl.set("#cloud-num",{textContent:"937,500"},5.015);tl.set("#cloud-num",{textContent:"954,082"},5.070);tl.set("#cloud-num",{textContent:"968,112"},5.125);tl.set("#cloud-num",{textContent:"979,592"},5.180);tl.set("#cloud-num",{textContent:"988,520"},5.235);tl.set("#cloud-num",{textContent:"994,898"},5.290);tl.set("#cloud-num",{textContent:"998,724"},5.345);tl.set("#cloud-num",{textContent:"1,000,000"},5.400);
+tl.fromTo("#cloud-complex",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},6.870);
+tl.fromTo("#cloud-shape",{y:0},{y:-14,duration:7.420,ease:"sine.inOut"},0.600);
+      tl.to("#cloud-stage",{opacity:0,y:-36,duration:0.22,ease:"power2.in"},8.060);
+      window.__timelines["cloud"] = tl;
+    })();
+  </script>
+</template>

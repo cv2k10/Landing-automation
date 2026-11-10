@@ -1,0 +1,53 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #F5F7FF; }
+.stage { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.topic { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; }
+.topic b { display: inline-block; padding: 14px 32px; border-radius: 999px; background: rgba(255,210,63,0.12);
+  border: 2px solid rgba(255,210,63,0.55); color: #FFD23F; font: 800 32px/1 Montserrat, sans-serif; letter-spacing: 0.08em; }
+.h1 { position: absolute; left: 60px; width: 960px; text-align: center; font: 900 88px/1.04 Montserrat, sans-serif; letter-spacing: -0.02em; }
+.h2 { position: absolute; left: 60px; width: 960px; text-align: center; font: 800 56px/1.1 Montserrat, sans-serif; letter-spacing: -0.01em; }
+.y { color: #FFD23F; } .c { color: #3DDCFF; } .g { color: #39E58C; } .r { color: #FF5A6A; } .p { color: #A68BFF; } .m { color: #9AA4C7; }
+.card { position: absolute; background: #141B33; border: 3px solid #2A3563; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.pill { position: absolute; display: flex; align-items: center; justify-content: center; gap: 16px; height: 96px; border-radius: 999px;
+  background: #1C2547; border: 3px solid #2A3563; font: 800 40px/1 Montserrat, sans-serif; color: #F5F7FF; white-space: nowrap; }
+.mono { font-family: "JetBrains Mono", monospace; }
+.label { position: absolute; font: 700 30px/1.2 Inter, sans-serif; color: #9AA4C7; text-align: center; }
+</style>
+  <div id="root" data-composition-id="clone" data-width="1080" data-height="1920">
+    <div class="stage" id="clone-stage">
+<div id="clone-topic" class="topic"><b>CLONE</b></div>
+      <div id="clone-term" class="card" style="left:70px;top:300px;width:940px;height:200px;background:#070B17;padding:36px 36px">
+        <div class="mono" style="font-size:31px;color:#39E58C;white-space:nowrap" id="clone-cmd">$</div>
+        <div class="mono" style="font-size:30px;color:#9AA4C7;margin-top:16px" id="clone-out"></div>
+      </div><div id="clone-pc0" class="abs" style="left:70px;top:700px;width:290px;height:210px">
+  <div style="position:absolute;left:23px;top:0;width:244px;height:180px;border-radius:16px;background:#1C2547;border:5px solid #2A3563;overflow:hidden;display:flex;align-items:center;justify-content:center"><div id="clone-f0"><svg width="120" height="89" viewBox="0 0 100 74"><path d="M4 10a6 6 0 0 1 6-6h24l8 8h48a6 6 0 0 1 6 6v46a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6z" fill="#FFD23F"/></svg></div></div>
+  <div style="position:absolute;left:0;top:176px;width:290px;height:28px;border-radius:0 0 18px 18px;background:#2A3563"></div></div><div id="clone-l0" class="label" style="left:70px;top:920px;width:290px">New laptop</div><div id="clone-pc1" class="abs" style="left:395px;top:700px;width:290px;height:210px">
+  <div style="position:absolute;left:23px;top:0;width:244px;height:180px;border-radius:16px;background:#1C2547;border:5px solid #2A3563;overflow:hidden;display:flex;align-items:center;justify-content:center"><div id="clone-f1"><svg width="120" height="89" viewBox="0 0 100 74"><path d="M4 10a6 6 0 0 1 6-6h24l8 8h48a6 6 0 0 1 6 6v46a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6z" fill="#FFD23F"/></svg></div></div>
+  <div style="position:absolute;left:0;top:176px;width:290px;height:28px;border-radius:0 0 18px 18px;background:#2A3563"></div></div><div id="clone-l1" class="label" style="left:395px;top:920px;width:290px">Teammate</div><div id="clone-pc2" class="abs" style="left:720px;top:700px;width:290px;height:210px">
+  <div style="position:absolute;left:23px;top:0;width:244px;height:180px;border-radius:16px;background:#1C2547;border:5px solid #2A3563;overflow:hidden;display:flex;align-items:center;justify-content:center"><div id="clone-f2"><svg width="120" height="89" viewBox="0 0 100 74"><path d="M4 10a6 6 0 0 1 6-6h24l8 8h48a6 6 0 0 1 6 6v46a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6z" fill="#FFD23F"/></svg></div></div>
+  <div style="position:absolute;left:0;top:176px;width:290px;height:28px;border-radius:0 0 18px 18px;background:#2A3563"></div></div><div id="clone-l2" class="label" style="left:720px;top:920px;width:290px">Office PC</div><div id="clone-same" class="pill" style="left:240px;top:990px;width:600px;height:86px;font-size:36px;background:#39E58C;border-color:#39E58C;color:#0B1020">SAME PROJECT</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#clone-term",{opacity:0,y:40},{opacity:1,y:0,duration:0.45,ease:"power3.out"},0.020);
+tl.set("#clone-cmd",{textContent:"$"},0.279);tl.set("#clone-cmd",{textContent:"$ "},0.309);tl.set("#clone-cmd",{textContent:"$ g"},0.338);tl.set("#clone-cmd",{textContent:"$ gi"},0.368);tl.set("#clone-cmd",{textContent:"$ git"},0.397);tl.set("#clone-cmd",{textContent:"$ git "},0.426);tl.set("#clone-cmd",{textContent:"$ git c"},0.456);tl.set("#clone-cmd",{textContent:"$ git cl"},0.485);tl.set("#clone-cmd",{textContent:"$ git clo"},0.515);tl.set("#clone-cmd",{textContent:"$ git clon"},0.544);tl.set("#clone-cmd",{textContent:"$ git clone"},0.574);tl.set("#clone-cmd",{textContent:"$ git clone "},0.603);tl.set("#clone-cmd",{textContent:"$ git clone g"},0.632);tl.set("#clone-cmd",{textContent:"$ git clone gi"},0.662);tl.set("#clone-cmd",{textContent:"$ git clone git"},0.691);tl.set("#clone-cmd",{textContent:"$ git clone gith"},0.721);tl.set("#clone-cmd",{textContent:"$ git clone githu"},0.750);tl.set("#clone-cmd",{textContent:"$ git clone github"},0.779);tl.set("#clone-cmd",{textContent:"$ git clone github."},0.809);tl.set("#clone-cmd",{textContent:"$ git clone github.c"},0.838);tl.set("#clone-cmd",{textContent:"$ git clone github.co"},0.868);tl.set("#clone-cmd",{textContent:"$ git clone github.com"},0.897);tl.set("#clone-cmd",{textContent:"$ git clone github.com/"},0.926);tl.set("#clone-cmd",{textContent:"$ git clone github.com/y"},0.956);tl.set("#clone-cmd",{textContent:"$ git clone github.com/yo"},0.985);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you"},1.015);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/"},1.044);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/c"},1.074);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/cl"},1.103);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/cli"},1.132);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/clie"},1.162);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/clien"},1.191);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/client"},1.221);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/client-"},1.250);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/client-s"},1.279);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/client-si"},1.309);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/client-sit"},1.338);tl.set("#clone-cmd",{textContent:"$ git clone github.com/you/client-site"},1.368);
+tl.set("#clone-out",{"textContent":"Cloning into 'client-site'... done."},2.970);
+tl.fromTo("#clone-pc0",{opacity:0,y:50},{opacity:1,y:0,duration:0.45,ease:"power3.out"},3.760);
+tl.fromTo("#clone-l0",{opacity:0},{opacity:1,duration:0.3,ease:"none"},3.910);
+tl.fromTo("#clone-f0",{opacity:0,y:-120},{opacity:1,y:0,duration:0.45,ease:"bounce.out"},4.060);
+tl.fromTo("#clone-pc1",{opacity:0,y:50},{opacity:1,y:0,duration:0.45,ease:"power3.out"},4.570);
+tl.fromTo("#clone-l1",{opacity:0},{opacity:1,duration:0.3,ease:"none"},4.720);
+tl.fromTo("#clone-f1",{opacity:0,y:-120},{opacity:1,y:0,duration:0.45,ease:"bounce.out"},4.870);
+tl.fromTo("#clone-pc2",{opacity:0,y:50},{opacity:1,y:0,duration:0.45,ease:"power3.out"},5.250);
+tl.fromTo("#clone-l2",{opacity:0},{opacity:1,duration:0.3,ease:"none"},5.400);
+tl.fromTo("#clone-f2",{opacity:0,y:-120},{opacity:1,y:0,duration:0.45,ease:"bounce.out"},5.550);
+tl.fromTo("#clone-same",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.38,ease:"back.out(2)"},5.670);
+      tl.to("#clone-stage",{opacity:0,y:-36,duration:0.22,ease:"power2.in"},6.460);
+      window.__timelines["clone"] = tl;
+    })();
+  </script>
+</template>
