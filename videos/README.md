@@ -31,6 +31,7 @@ node ../_tools/build.mjs
 npx hyperframes@0.9.27 check
 npx hyperframes@0.9.27 preview  # edit in the Studio
 npx hyperframes@0.9.27 render -o ../renders/<name>.mp4
+../_tools/master.sh ../renders/<name>.mp4 ../renders/<name>-final.mp4   # -15 LUFS for social
 ```
 
 Sound effects are the Pixabay-licensed files bundled with HyperFrames. There is no music
